@@ -8,7 +8,7 @@ class App extends Component {
     this.state = {
       count: 60
     }
-  }
+  } 
   render() {
     const { count } = this.state
     return (
