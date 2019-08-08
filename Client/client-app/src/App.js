@@ -7,8 +7,8 @@ class App extends Component {
   constructor(props) {
   super(props);
   this.state = {
-    items: [],
-    oaded: false,
+    result: [],
+    loaded: false,
   } 
   }
 
@@ -18,15 +18,15 @@ class App extends Component {
     .then(res => res.json())
     .then(json => {
       this.setState({
-        isLoaded: true,
-        items: json,
+        loaded: true,
+        result: json,
       })
     })
   }
 
 render() {
   console.log(this.state.items)
-  var { isLoaded, items } = this.state;
+  var { loaded, result } = this.state;
   
     return (
       
@@ -40,13 +40,11 @@ render() {
         <div className="button">
 
 
-        <button className="btn" onClick={this.state.items}>Details</button>
-
         </div>
 <div className="companies">
 
 <ol class="wrapper">
-        {items.length != 0 ? items.companies.map(item =>(
+        {result.length != 0 ? result.companies.map(item =>(
        <CompanyInfo company={item}/>
         )) : "loading..."}
 
