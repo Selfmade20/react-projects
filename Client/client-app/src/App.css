@@ -1,0 +1,87 @@
+.App {
+  text-align: left;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.App-header {
+  background-color: #2b6ae7;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: rgb(233, 225, 225);
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.main {
+	font-size: 20px;
+	font-family: 'Lucida Sans';
+  color: rgb(238, 18, 70);
+  text-align: center;
+}
+
+.btn{
+  padding:2rem;
+
+}
+
+.button {
+  font-size: 10px;
+  /* align-items: center; */
+  /* margin-left:25px; */
+  /* display: block; */
+  text-align: center;
+
+  margin:3rem;
+
+
+}
+
+.companies {
+  color: black;
+  text-align: left;
+  font-family: fantasy;
+  font-size: 20px;
+}
+
+
+
+body {
+	margin: 0;
+	width: 100%;
+	height: 100vh;
+	font-family: "Exo", sans-serif;
+	color: #fff;
+	background: linear-gradient(-45deg, #ee7752, #e4e73c, #23a6d5, #23d5ab);
+	background-size: 400% 400%;
+	animation: gradientBG 15s ease infinite;
+}
+
+@keyframes gradientBG {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+.container {
+	width: 100%;
+	position: absolute;
+	top: 35%;
+	text-align: center;
+}
