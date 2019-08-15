@@ -21,6 +21,7 @@ this.resetTimer = this.resetTimer.bind(this);
 
 captureTime(){
   var date = new Date();
+  console.log("capture" + date);
   this.setState({date:[...this.state.date, date]})
 
 }
@@ -43,9 +44,10 @@ subTime() {
 }
 
 startCount() {
-setInterval(() =>{
+let interval = setInterval(() =>{
   if(this.state.count <= 0) {
     this.captureTime();
+    clearInterval(interval)
     return 0
   }
   this.subTime();
@@ -69,9 +71,8 @@ render(){
         <button onClick={this.startCount}>Start</button>
         </div>
       </header>
-
         <div className="Capture">
-        <h2>{this.state.date.map((time) => <li>{time.toLocaleTimeString()}</li>)}</h2>
+        <h2>{this.state.date.map((time) => <li>{time.toLocaleString()}</li>)}</h2>
  </div>      
 
 </div>

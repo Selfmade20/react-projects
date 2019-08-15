@@ -1,7 +1,15 @@
 .App {
   text-align:left;
   margin: 5px;
+  display:grid;
+grid-template-columns: 3fr 1fr;
+background-color: #282c34;
   
+}
+
+.Capture{
+  margin-top:30rem;
+  color: coral
 }
 
 .App-logo {
@@ -11,7 +19,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  text-align: center;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
