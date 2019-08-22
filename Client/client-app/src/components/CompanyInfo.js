@@ -1,33 +1,41 @@
-import React from 'react';
+import React, { Component } from 'react';
+import CompanyDetails from './CompanyDetails';
 
 
- const CompanyDetails = ({company}) => {
+
+class CompanyInfo extends Component {
   
-  return (
-  <div>
-      <ul>        
-              <li> Number of employees: {company.cik} </li>
-                 <li>Industry Category: {company.lei}</li>
-                 <li>Industy Group: {company.id}</li>
-                 <li>Stock exchange: {company.ticker}</li>
-      </ul>
+  constructor(props) {
+  super(props);
+  this.state = {
+   isDisplay: false
+  } 
 
-{/*       
-   <h3> {company.name}</h3>
-   <button> Show More</button>
-   <CompanyDetails company={company}/> */}
- </div>
-  )
+  }
+toggleDisplay = () =>{
+  this.setState({
+    isDisplay: !this.state.isDisplay
+  })
+  
+}
+  
+render() {
+    
+  const {company} = this.props;
+  console.log(this.state.isDisplay)
+  return (
+       <div>                    
+        <h3> {company.name}</h3>
+         <button style={{padding:"0.5rem" , textTransform:"uppercase"}} onClick={()=> this.toggleDisplay()}> Show Info</button>
+         {this.state.isDisplay ? <CompanyDetails company={company}/>: null}
+     </div>
+  );
+  }
+
+
 }
 
-export default CompanyDetails;
 
 
 
-
-
-
-
-//    <li key = {item.id}>
-//    Company name: {item.name} <ol> Number of employees: {item.cik} </ol><ol>Industry Category: {item.lei}</ol> <ol>Industy Group: {item.id}</ol> <ol>Stock exchange: {item.ticker}</ol>
-//  </li>
+export default CompanyInfo;

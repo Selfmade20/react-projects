@@ -1,33 +1,29 @@
-import React, { Component } from 'react';
-import CompanyDetails from './CompanyDetails';
+import React from 'react';
 
 
-class CompanyInfo extends Component {
+const CompanyDetails = ({company}) => {
   
-  constructor(props) {
-  super(props);
-  this.state = {
-   
-  } 
+  return (
+  <div>
+      <ul className="ul">        
+              <li> Number of employees: {company.cik*1} </li>
+                 <li>Industry Category: {company.lei}</li>
+                 <li>Industry Group: {company.id}</li>
+                 <li>Stock exchange: {company.ticker}</li>
+      </ul>
 
-  }
-
-render() {
-
-    const {company} = this.props;
-    return (
-    <div>                    
-        <h3> {company.name}</h3>
-        <button> Show More</button>
-        <CompanyDetails company={company}/>
-    </div>
-  );
-  }
-
-
+ </div>
+  )
 }
 
+export default CompanyDetails;
 
 
 
-export default CompanyInfo;
+
+
+
+
+//    <li key = {item.id}>
+//    Company name: {item.name} <ol> Number of employees: {item.cik} </ol><ol>Industry Category: {item.lei}</ol> <ol>Industy Group: {item.id}</ol> <ol>Stock exchange: {item.ticker}</ol>
+//  </li>

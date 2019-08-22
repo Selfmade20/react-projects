@@ -1,58 +1,53 @@
 import React, { Component } from 'react';
 import "./App.css";
-import CompanyInfo from './components/CompanyDetails';
+import CompanyInfo from './components/CompanyInfo';
+
 
 class App extends Component {
-  
+
   constructor(props) {
-  super(props);
-  this.state = {
-    result: [],
-    loaded: false,
-  } 
+    super(props);
+    this.state = {
+      companies: [],
+      isLoaded: false,
+    }
   }
 
   componentDidMount() {
 
-    fetch('https://api-v2.intrinio.com/companies?api_key=OjkwNjBhMzgzZDI2NjM5MjYzNTlmMjExNGMxYjYyZmFh')   
-    .then(res => res.json())
-    .then(json => {
-      this.setState({
-        loaded: true,
-        result: json,
+    fetch('https://api-v2.intrinio.com/companies?api_key=OjkwNjBhMzgzZDI2NjM5MjYzNTlmMjExNGMxYjYyZmFh')
+      .then(res => res.json())
+      .then(json => {
+        this.setState({
+          isLoaded: true,
+          companies: json,
+        })
       })
-    })
   }
 
-render() {
-  console.log(this.state.items)
-  var { loaded, result } = this.state;
-  
+  render() {
+    console.log(this.state.companies)
+    var { isLoaded, companies } = this.state;
+
     return (
-      
+      <div className="App">
 
-    <div className="App">
-
-      <header className="main" >
-        <h1>Company listings</h1>
+        <header className="main" >
+          <h1>Company Listings</h1>
         </header>
 
-        <div className="button">
+        <div className="companies">
 
+          <li class="wrapper">
+            {companies.length != 0 ? companies.companies.map(company => (
+              <CompanyInfo company={company} />
+            )) : <div className="loader"></div>}
+
+          </li>
 
         </div>
-<div className="companies">
-
-<ol class="wrapper">
-        {result.length != 0 ? result.companies.map(item =>(
-       <CompanyInfo company={item}/>
-        )) : "loading..."}
-
-      </ol>
-
-</div>
-</div>
-  );
+      </div>
+    );
   }
 
 
