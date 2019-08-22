@@ -41,7 +41,7 @@ class App extends Component {
           <li class="wrapper">
             {companies.length != 0 ? companies.companies.map(company => (
               <CompanyInfo company={company} />
-            )) : <div className="loader"></div>}
+            )) : <div className="loader">Loading</div>}
 
           </li>
 
