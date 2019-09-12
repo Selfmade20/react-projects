@@ -1,44 +1,43 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
+import axios from 'axios';
+import './App.css';
 
 class QuoteMachine extends Component {
-    constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-        isLoaded: false,
-        quote: []
-    }   
+      quote: null,
     }
-
-
-    componentDidMount() {
-
-        fetch('https://gist.githubusercontent.com/camperbot/5a022b72e96c4c9585c32bf6a75f62d9/raw/e3c6895ce42069f0ee7e991229064f167fe8ccdc/quotes.json')
-        .then(res => res.json())
-       .then(json => {
-        this.setState({
-          isLoaded: true,
-          quote: json,
-        })
-      })
   }
 
-getRandomQuote = event => {
-    this.setState({
+  getQuote = () => {
+    axios.get('https://gist.githubusercontent.com/camperbot/5a022b72e96c4c9585c32bf6a75f62d9/raw/e3c6895ce42069f0ee7e991229064f167fe8ccdc/quotes.json')
+    .then((response) => this.setState({ quote: response.data.quotes[Math.floor(Math.random() * 102)] }))
+  }
 
-    })
-console.log('clicking')
-}
+  componentDidMount = () => {
+    this.getQuote();
+  }
 
-render(){
-   return(
-     <div className='wrapper'>
-         <h1>Quote Machine</h1>
-         <button onClick={this.getRandomQuote}>Click to get quote</button>
-     </div>  
-       
-       
-   ); 
-}
+
+  render() {
+
+    return (
+      <div className='QuoteMachine'>
+        <div className= 'display-box'>
+          <div className='quote'>
+          <h3>{this.state.quote !== null && this.state.quote.quote}</h3>
+          </div>
+          <div className='author'>
+          <h4>{this.state.quote !== null && this.state.quote.author}</h4>
+          </div>
+        </div>
+        <button onClick={this.getQuote}>Get Quote</button>
+      </div>
+
+
+    );
+  }
 
 }
 
