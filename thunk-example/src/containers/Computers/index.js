@@ -1,34 +1,34 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { addComputer } from '../../redux/computers/thunks'
+import { addComputer, removeComputer } from '../../redux/computers/thunks'
+
 
 class Computer extends Component {
   constructor(props) {
     super(props)
-    this.state = { newComputer: "" }
+    this.state = {
+      newComputer: "",
+      removed: null
+    }
   }
 
-  componentDidMount() {
-    this.props.addComputer()
-  }
 
   setValue = (e) => {
     this.setState({ newComputer: e.target.value })
   }
 
-  addComputer = () => {
-    this.props.addComputer({ name: this.state.newComputer })
-    this.setState({ newComputer: ''})
+  removeValue = (e) => {
+    this.setState({ removed: e.target.value })
   }
 
   render() {
-      const { computers } = this.props
-      console.log(computers)
+    const { computers } = this.props
     return <div>
       <h1>Computers</h1>
-      { computers.map(u => <div>{ u["first_name"] }</div>) }
+      {computers.map(u => <div>{u.name}</div>)}
       <input type="text" onChange={this.setValue} value={this.state.newComputer} />
-      <button onClick={this.addComputer}>Add Computer</button>
+      <button onClick={() => this.props.addComputer(this.state.newComputer)}>Add Computer</button>
+      <button onClick={() => this.props.removeComputer(this.state.removed)}>Remove Computer</button>
     </div>
   }
 }
@@ -38,12 +38,12 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  addComputer: () => {
-    dispatch(addComputer)
+  addComputer: (computers) => {
+    dispatch(addComputer(computers))
   },
-  addComputer: (computer) => {
-    dispatch(addComputer(computer))
-  },
+  removeComputer: (computers) => {
+    dispatch(removeComputer(computers))
+  }
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Computer)

@@ -6,3 +6,11 @@
       payload: computer
     }
   }
+
+  export const removeComputer = (computer) => {
+    console.log('ace', computer)
+    return {
+      type: "REMOVE_COMPUTER",
+      payload: computer
+    }
+  }

@@ -1,14 +1,17 @@
-const inititalState = { computers:[ {name : "" }]  }
+const inititalState = {
+  computers: [{
+    name: ""
+  }]
+}
 
-export default function computers(state = inititalState, action) {
-  console.log("state" ,state)
+
+export default function computerReducer(state = inititalState, action) {
   switch (action.type) {
     case "ADD_COMPUTER": {
-      return { ...state, all: action.payload }
+      return { computers: [...state.computers, {name :action.payload} ]}
     }
-    case "ADD_COMPUTER": {
-      const newState = { ...state, all: [...state.all, action.payload] }
-      return newState;
+    case "REMOVE_COMPUTER": {
+      return {computers: [...state.computers, {name :action.payload} ]}
     }
     default:
       return state
