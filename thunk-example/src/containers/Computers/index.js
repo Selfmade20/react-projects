@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { addComputer, removeComputer } from '../../redux/computers/thunks'
+import { addComputer, removeComputer } from '../../redux/actions'
 
 
 class Computer extends Component {
@@ -8,27 +8,46 @@ class Computer extends Component {
     super(props)
     this.state = {
       newComputer: "",
-      removed: null
+      isToggleOn: true      
     }
+    this.handleClick = this.handleClick.bind(this);
   }
 
 
   setValue = (e) => {
     this.setState({ newComputer: e.target.value })
   }
-
-  removeValue = (e) => {
-    this.setState({ removed: e.target.value })
+ 
+  handleClick() {
+    this.setState(state => ({
+      isToggleOn: !state.isToggleOn
+    }));
   }
 
+  addComputer(computer){
+      const {computers} =  this.props;
+
+      for(var i in computers){
+        if(computers[i].name == computer){
+          console.log("found match")
+          return
+        }
+      }
+
+    this.props.addComputer(computer)
+  }
+  
   render() {
     const { computers } = this.props
+
+
     return <div>
       <h1>Computers</h1>
-      {computers.map(u => <div>{u.name}</div>)}
+      {computers.map(u => <div>{u.name}
+        <button  onClick={() => this.props.removeComputer(u.name)} style={{letterSpacing: '5 rem'}}>Remove Computer</button>
+      </div>)}
       <input type="text" onChange={this.setValue} value={this.state.newComputer} />
-      <button onClick={() => this.props.addComputer(this.state.newComputer)}>Add Computer</button>
-      <button onClick={() => this.props.removeComputer(this.state.removed)}>Remove Computer</button>
+      <button onClick={() => this.addComputer(this.state.newComputer)}>Add Computer</button>
     </div>
   }
 }

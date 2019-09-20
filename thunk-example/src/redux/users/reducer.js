@@ -1,3 +1,5 @@
+import Users from "../../containers/Users"
+
 const inititalState = { all: [ ] }
 
 export default function counter(state = inititalState, action) {
@@ -11,6 +13,9 @@ export default function counter(state = inititalState, action) {
       const newState = { ...state, all: [...state.all, action.payload] }
       console.log('new state', newState)
       return newState;
+    }
+    case "REMOVE_USER": {
+      return { inititalState: [...state.all.filter(action => Users.name !== action.payload.name) ]}
     }
     default:
       return state

@@ -14,3 +14,11 @@ export const addUser = (user) => {
     payload: user
   }
 }
+
+export const User = (user) => {
+  console.log('ace', user)
+  return {
+    type: "REMOVE_USER",
+    payload: user
+  }
+}
