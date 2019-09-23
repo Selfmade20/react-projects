@@ -53,7 +53,7 @@ class Computer extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  computers: state.computers.computers,
+  computers: state.computers.computers
 })
 
 const mapDispatchToProps = dispatch => ({
