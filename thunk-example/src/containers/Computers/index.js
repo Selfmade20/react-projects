@@ -6,7 +6,7 @@ import { addComputer, removeComputer } from '../../redux/actions'
 class Computer extends Component {
   constructor(props) {
     super(props)
-    this.state = {
+    this.state = { 
       newComputer: "",
       isToggleOn: true      
     }
