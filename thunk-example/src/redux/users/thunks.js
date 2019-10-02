@@ -15,7 +15,7 @@ export const addUser = (user) => {
   }
 }
 
-export const User = (user) => {
+export const removeUser = (user) => {
   console.log('ace', user)
   return {
     type: "REMOVE_USER",

@@ -43,8 +43,8 @@ class Computer extends Component {
 
     return <div>
       <h1>Computers</h1>
-      {computers.map(u => <div>{u.name}
-        <button  onClick={() => this.props.removeComputer(u.name)} style={{letterSpacing: '5 rem'}}>Remove Computer</button>
+      {computers.map(c => <div>{c.name}
+        <button  onClick={() => this.props.removeComputer(c.name)} style={{letterSpacing: '5 rem'}}> Remove Computer</button>
       </div>)}
       <input type="text" onChange={this.setValue} value={this.state.newComputer} />
       <button onClick={() => this.addComputer(this.state.newComputer)}>Add Computer</button>

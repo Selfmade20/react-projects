@@ -1,6 +1,6 @@
 const inititalState = {
   computers: [{
-    name: "mac"
+    name: "MacBook"
   }]
 }
 

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { getAllUsers, addUser } from '../../redux/users/thunks'
+import { getAllUsers } from '../../redux/users/thunks'
+import { addUser, removeUser } from '../../redux/actions'
 
 class Users extends Component {
   constructor(props) {
@@ -18,14 +19,20 @@ class Users extends Component {
 
   addUser = () => {
     this.props.addUser({ first_name: this.state.newUser })
-    this.setState({ newUser: ''})
+    this.setState({ newUser: '' })
+    
   }
+
+
 
   render() {
     const { users } = this.props
     return <div>
       <h1>Users</h1>
-      { users.map(u => <div>{ u["first_name"] }</div>) }
+      {users.map(u => <div>{u["first_name"]}
+        <button onClick={() => this.props.removeUser(u["first_name"])}
+         style={{ letterSpacing: '5 rem' }}> Remove User</button>
+      </div>)}
       <input type="text" onChange={this.setValue} value={this.state.newUser} />
       <button onClick={this.addUser}>Add User</button>
     </div>
@@ -43,6 +50,9 @@ const mapDispatchToProps = dispatch => ({
   addUser: (user) => {
     dispatch(addUser(user))
   },
+  removeUser: (user) => {
+    dispatch(removeUser(user))
+  }
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Users)

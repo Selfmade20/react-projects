@@ -11,8 +11,8 @@ class Books extends Component {
   addBook(books) {
   const {book} = this.props;
   
-  for(var i in book){
-    if(book[i].name == book){
+  for(var i in books){
+    if(book[i].name == books){
       console.log("found match")
     return
     }

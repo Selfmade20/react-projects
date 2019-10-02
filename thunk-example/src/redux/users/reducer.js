@@ -15,7 +15,7 @@ export default function counter(state = inititalState, action) {
       return newState;
     }
     case "REMOVE_USER": {
-      return { inititalState: [...state.all.filter(action => Users.name !== action.payload.name) ]}
+      return { all: [...state.all.filter(user => user['first_name'] !== action.payload) ]}
     }
     default:
       return state

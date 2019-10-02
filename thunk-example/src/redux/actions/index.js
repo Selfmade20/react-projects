@@ -12,10 +12,10 @@ export const REMOVE_USER = 'REMOVE_USER'
  * action creators
  */
 
-export function addBook(name,author) {
+export function addBook(name) {
   return {
     type: "ADD_BOOK",
-    payload: { name, author }
+    payload: { name }
   }
 }
 export function removeBook(name) {
@@ -33,7 +33,7 @@ export function removeComputer(name){
 
 export function addComputer(name) {
   return {
-    type: ADD_COMPUTER, 
+    type: "ADD_COMPUTER", 
     payload: { name }
    }
 }
@@ -44,4 +44,11 @@ export function addUser(name) {
     type: "ADD_USER",
     payload: name
    }
+}
+
+export function removeUser(name) {
+  return {
+    type: "REMOVE_USER",
+    payload: name
+  }
 }
