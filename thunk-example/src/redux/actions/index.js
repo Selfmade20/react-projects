@@ -52,3 +52,10 @@ export function removeUser(name) {
     payload: name
   }
 }
+
+export function editContent(name , id) {
+  return{
+    type: "EDIT_CONTENT",
+    payload: {name }
+  }
+}

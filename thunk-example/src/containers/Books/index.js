@@ -1,40 +1,67 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addBook, removeBook } from '../../redux/actions';
-import books from '../../redux/books/reducer';
-
-
+import { addBook, removeBook, editContent } from '../../redux/actions';
+import availableBooks from '../../redux/books/reducer';
 
 
 class Books extends Component {
-
-  addBook(books) {
-  const {book} = this.props;
-  
-  for(var i in books){
-    if(book[i].name == books){
-      console.log("found match")
-    return
+  constructor(props) {
+    super(props)
+    this.state = {
+      date: new Date().toLocaleDateString(),
+      isToggle: false,
+      editId: "",
+      editTitle: ""
     }
   }
+
+  setEditState = (editTitle, editId) => {
+    this.setState({
+      isToggle: !this.state.isToggle,
+      editId,
+      editTitle
+    });
+  }
+
+  addBook(books) {
+    const { availableBooks } = this.props;
+
+    for (var i in availableBooks) {
+      if (availableBooks[i].name == books) {
+        console.log("found match")
+        return
+      }
+    }
     this.props.addBook(books)
   }
 
-
   render() {
-    console.log('props', this.props)
+    const { isToggle, name, author , editTitle ,  editId} = this.state;
+    const { availableBooks } = this.props;
     return <div className="books"><h1>Books</h1>
-      {this.props.availableBooks.map(book => <div style={{ margin: '2rem', wordSpacing: '5px'  }}
-        key={book.name}>NAME {book.name} AUTHOR {book.author}
-         <button onClick={() => this.props.removeBook(book.name, book.author)}>Remove Book</button>
-        </div>) 
-        }
-     
+      {availableBooks.map(book => <div style={{ margin: '2rem', wordSpacing: '5px' }}
+        key={book.name}><strong>Name:</strong> {book.name} <strong>Author:</strong> {book.author} <ul>{this.state.date}</ul>
+        <div>
+          <button onClick={() => this.props.removeBook(book.name, book.author)}>Remove Book</button>
+          <button onClick={() => this.setEditState(book.name, book.id)}>Edit</button>
+        </div>
+      </div>)
+      }
+      {isToggle !== false ? <div>
+        <input type="text" 
+        value={editTitle}
+        onChange={e => this.setState({ editTitle: e.target.value })} />
+        <button onClick={() => this.props.editContent(editTitle ,  editId)}>Save</button>
+      </div> : null}
       <label>Name here :</label>
-      <input type="text" style={{ margin: '1rem' }} onChange={e => this.setState({ name: e.target.value })} />
+      <input placeholder="Enter name here" type="text" style={{ margin: '1px' }} onChange={e => this.setState({ name: e.target.value })} />
       <label>Author here :</label>
-      <input style={{ margin: '1rem' }} type="text" onChange={e => this.setState({ author: e.target.value })} />
-      <button onClick={() => this.props.addBook(this.state.name, this.state.author)}>Add</button>
+      {/* <div> */}
+        <input placeholder="Enter author here" style={{ margin: '1rem' }}
+          type="text"
+          onChange={e => this.setState({ author: e.target.value })} />
+        <button onClick={() => this.props.addBook(name, author)}>Add</button>
+      {/* </div> */}
     </div>
   }
 
@@ -45,11 +72,15 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  addBook: (name, author) => 
-  dispatch(addBook({ name, author })),
-
-  removeBook: (name, author) => 
-  dispatch(removeBook({name, author}))
+  addBook: (name, author) =>
+    dispatch(addBook({ name, author })
+    ),
+  removeBook: (name, author) =>
+    dispatch(removeBook({ name, author })
+    ),
+  editContent: (name , id) =>
+    dispatch(editContent({ name , id  })
+    ),
 })
 
 

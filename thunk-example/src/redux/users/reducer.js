@@ -1,6 +1,9 @@
 import Users from "../../containers/Users"
 
-const inititalState = { all: [ ] }
+const inititalState = { 
+  all: [ ], 
+  id: "1"
+}
 
 export default function counter(state = inititalState, action) {
   console.log(action)
@@ -10,7 +13,7 @@ export default function counter(state = inititalState, action) {
     }
     case "ADD_USER": {
       console.log('adding user')
-      const newState = { ...state, all: [...state.all, action.payload] }
+      const newState = { ...state, all: [...state.all, action.payload ] }
       console.log('new state', newState)
       return newState;
     }
