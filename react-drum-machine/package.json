@@ -1,0 +1,22 @@
+{
+  "name": "react-drum-machine",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "react-scripts": "1.0.14",
+    "react-simple-range": "^1.5.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "deploy": "npm run build&&gh-pages -d build"
+  },
+  "homepage": "https://jamesriall.co.uk/react-drum-machine",
+  "devDependencies": {
+    "gh-pages": "^1.1.0"
+  }
+}

@@ -1,0 +1,244 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  background: -webkit-linear-gradient(26deg, rgb(26, 18, 217), rgb(255, 40, 0));
+  background: linear-gradient(26deg, rgb(26, 18, 217), rgb(255, 40, 0));
+  min-height: 100vh;
+  color: white;
+  font-family: "Lato", sans-serif;
+}
+
+h1 {
+  font-size: 60px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.sound-button {
+  background-color: #b3b3b3;
+  border: 3px solid black;
+  border-radius: 10px;
+  text-align: center;
+  height: 125px;
+  width: 200px;
+  line-height: 125px;
+  font-size: 120%;
+  display: inline-block;
+  margin: 10px;
+  cursor: pointer;
+}
+
+.sound-button:hover {
+  background-color: #c6c4c4;
+}
+
+.sound-buttons-container {
+  text-align: center;
+  width: 70%;
+  margin: 0 auto;
+}
+
+.control-button {
+  background-color: #b3b3b3;
+  border: 3px solid black;
+  border-radius: 10px;
+  text-align: center;
+  height: 80px;
+  width: 200px;
+  line-height: 80px;
+  font-size: 70%;
+  display: inline-block;
+  margin: 10px;
+  cursor: pointer;
+}
+
+.control-button:hover {
+  background-color: #c6c4c4;
+}
+
+.controls {
+  text-align: center;
+  width: 50%;
+  margin: 0 auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.volume-slider {
+  width: 100%;
+  margin-top: 30px;
+}
+
+@media (max-width: 599px) {
+  h1 {
+    font-size: 30px;
+  }
+  .sound-buttons-container {
+    width: auto;
+  }
+  .controls {
+    width: 100%;
+  }
+  .sound-button {
+    height: 70px;
+    width: 100px;
+    line-height: 70px;
+    font-size: 70%;
+  }
+  .control-button {
+    height: 70px;
+    width: 150px;
+    line-height: 70px;
+    font-size: 70%;
+  }
+  .volume-slider {
+    width: 70%;
+  }
+}
+
+@media (max-width: 1400px) and (min-width: 600px) {
+  .sound-button {
+    height: 90px;
+    width: 120px;
+    line-height: 90px;
+    font-size: 70%;
+  }
+  .control-button {
+    height: 80px;
+    width: 120px;
+    line-height: 80px;
+    font-size: 70%;
+  }
+}
