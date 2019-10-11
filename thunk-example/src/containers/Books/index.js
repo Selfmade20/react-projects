@@ -26,26 +26,25 @@ class Books extends Component {
   addBook(name, author) {
     const { availableBooks } = this.props;
 
-    console.log(availableBooks , name); 
+    console.log(availableBooks, name);
     for (var i in availableBooks) {
       if (availableBooks[i].name == name.trim()) {
-        console.log("found match")
         return
       }
     }
-    this.props.addBook(name , author)
+    this.props.addBook(name, author)
   }
 
-  editContent(editTitle ,  editId){
-    this.props.editContent(editTitle ,  editId)
+  editContent(editTitle, editId) {
+    this.props.editContent(editTitle, editId)
     this.setState({
       isToggle: !this.state.isToggle,
-      editId:'',
-      editTitle:''
+      editId: '',
+      editTitle: ''
     });
   }
   render() {
-    const { isToggle, name, author , editTitle ,  editId} = this.state;
+    const { isToggle, name, author, editTitle, editId } = this.state;
     const { availableBooks } = this.props;
     return <div className="books"><h1>Books</h1>
       {availableBooks.map(book => <div style={{ margin: '2rem', wordSpacing: '5px' }}
@@ -57,19 +56,19 @@ class Books extends Component {
       </div>)
       }
       {isToggle !== false ? <div>
-        <input type="text" 
-        value={editTitle}
-        onChange={e => this.setState({ editTitle: e.target.value })} />
-        <button onClick={() => this.editContent(editTitle ,  editId)}>Save</button>
+        <input type="text"
+          value={editTitle}
+          onChange={e => this.setState({ editTitle: e.target.value })} />
+        <button onClick={() => this.editContent(editTitle, editId)}>Save</button>
       </div> : null}
       <label>Name here :</label>
       <input placeholder="Enter name here" type="text" style={{ margin: '1px' }} onChange={e => this.setState({ name: e.target.value })} />
       <label>Author here :</label>
       {/* <div> */}
-        <input placeholder="Enter author here" style={{ margin: '1rem' }}
-          type="text"
-          onChange={e => this.setState({ author: e.target.value })} />
-        <button onClick={() => this.addBook(name, author)}>Add</button>
+      <input placeholder="Enter author here" style={{ margin: '1rem' }}
+        type="text"
+        onChange={e => this.setState({ author: e.target.value })} />
+      <button onClick={() => this.addBook(name, author)}>Add</button>
       {/* </div> */}
     </div>
   }
@@ -87,8 +86,8 @@ const mapDispatchToProps = dispatch => ({
   removeBook: (name, author) =>
     dispatch(removeBook({ name, author })
     ),
-  editContent: (name , id) =>
-    dispatch(editContent({ name , id  })
+  editContent: (name, id) =>
+    dispatch(editContent({ name, id })
     ),
 })
 

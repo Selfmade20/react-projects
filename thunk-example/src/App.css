@@ -1,6 +1,6 @@
 .App {
   text-align: center;
-  background-color: pink;
+  background-color:grey;
   height: 1000px;
   display: flex;
 justify-content: space-around;

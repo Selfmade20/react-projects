@@ -13,4 +13,4 @@
       type: "REMOVE_BOOK",
       payload: book
     }
-  }shjh
+  }

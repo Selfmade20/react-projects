@@ -30,8 +30,8 @@ class Users extends Component {
     return <div>
       <h1>Users</h1>
       {users.map(u => <div>{this.state.date} <strong>{u["first_name"]}</strong>
-      <button onClick={() => this.props.removeUser(u["first_name"])}
-      style={{ margin: '5px' }}> Remove User</button> 
+        <button onClick={() => this.props.removeUser(u["first_name"])}
+          style={{ margin: '5px' }}> Remove User</button>
       </div>)}
       <input placeholder="Enter user here" style={{ margin: '1px' }} type="text" onChange={this.setValue} value={this.state.newUser} />
       <button onClick={this.addUser}>Add User</button>
