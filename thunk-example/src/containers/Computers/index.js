@@ -27,6 +27,7 @@ class Computer extends Component {
       }
     }
     this.props.addComputer(computer)
+    this.setState({ newComputer: '' })
   }
 
   render() {

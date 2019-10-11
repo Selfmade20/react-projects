@@ -23,18 +23,27 @@ class Books extends Component {
     });
   }
 
-  addBook(books) {
+  addBook(name, author) {
     const { availableBooks } = this.props;
 
+    console.log(availableBooks , name); 
     for (var i in availableBooks) {
-      if (availableBooks[i].name == books) {
+      if (availableBooks[i].name == name.trim()) {
         console.log("found match")
         return
       }
     }
-    this.props.addBook(books)
+    this.props.addBook(name , author)
   }
 
+  editContent(editTitle ,  editId){
+    this.props.editContent(editTitle ,  editId)
+    this.setState({
+      isToggle: !this.state.isToggle,
+      editId:'',
+      editTitle:''
+    });
+  }
   render() {
     const { isToggle, name, author , editTitle ,  editId} = this.state;
     const { availableBooks } = this.props;
@@ -51,7 +60,7 @@ class Books extends Component {
         <input type="text" 
         value={editTitle}
         onChange={e => this.setState({ editTitle: e.target.value })} />
-        <button onClick={() => this.props.editContent(editTitle ,  editId)}>Save</button>
+        <button onClick={() => this.editContent(editTitle ,  editId)}>Save</button>
       </div> : null}
       <label>Name here :</label>
       <input placeholder="Enter name here" type="text" style={{ margin: '1px' }} onChange={e => this.setState({ name: e.target.value })} />
@@ -60,7 +69,7 @@ class Books extends Component {
         <input placeholder="Enter author here" style={{ margin: '1rem' }}
           type="text"
           onChange={e => this.setState({ author: e.target.value })} />
-        <button onClick={() => this.props.addBook(name, author)}>Add</button>
+        <button onClick={() => this.addBook(name, author)}>Add</button>
       {/* </div> */}
     </div>
   }
