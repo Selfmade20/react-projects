@@ -20,31 +20,32 @@ class App extends React.Component {
     })
   }
 
-backdropClickHandler = () => {
-  this.setState({sideDrawerOpen: false});
-}
+  backdropClickHandler = () => {
+    this.setState({ sideDrawerOpen: false });
+  }
 
   render() {
     let sideDrawer;
     let backdrop;
 
     if (this.state.sideDrawerOpen) {
-      sideDrawer = <SideDrawer/>
-      backdrop = <Backdrop click={this.backdropClickHandler}/>
+      sideDrawer = <SideDrawer />
+      backdrop = <Backdrop click={this.backdropClickHandler} />
     }
     return (
-      <div style={{height: '100%'}}>
-        <Toolbar drawerClickHandler = {this.drawerToggleClickHandler} />
+      <div style={{ height: '100%' }}>
+        <Toolbar drawerClickHandler={this.drawerToggleClickHandler} />
         {sideDrawer}
         {backdrop}
         <main style={{ marginTop: '4%' }}>
         </main>
+        <div className="container">
         <div className="users"><Users /></div>
         <div className="books"><Books /></div>
         <div className="computers"><Computers /></div>
       </div >
-
-    );
+      </div >
+    )
   }
 }
 

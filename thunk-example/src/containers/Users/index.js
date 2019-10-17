@@ -8,7 +8,6 @@ class Users extends Component {
     super(props)
     this.state = {
       newUser: "",
-      date: new Date().toLocaleDateString(),
     }
   }
 
@@ -29,12 +28,14 @@ class Users extends Component {
     const { users } = this.props
     return <div>
       <h1>Users</h1>
-      {users.map(u => <div>{this.state.date} <strong>{u["first_name"]}</strong>
+      <strong>Name:</strong><input placeholder="Enter user here" style={{ margin: '1%', padding: '1%' }} type="text" onChange={this.setValue} value={this.state.newUser} />
+      <button onClick={this.addUser} style={{backgroundColor:'orange', color:'black', margin: '10px'}}>Add User</button>
+      {users.map(u => <div style={{padding: '1%'}}> <strong>Name: {u["first_name"]}</strong>
+      <div className='remove-user-button'>
         <button onClick={() => this.props.removeUser(u["first_name"])}
-          style={{ margin: '5px' }}> Remove User</button>
+          style={{margin: '4%', backgroundColor: 'purple', color: 'white' }}> Remove User</button>
+      </div>
       </div>)}
-      <input placeholder="Enter user here" style={{ margin: '1px' }} type="text" onChange={this.setValue} value={this.state.newUser} />
-      <button onClick={this.addUser}>Add User</button>
     </div>
   }
 }

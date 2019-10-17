@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {  Component } from 'react';
 import { connect } from 'react-redux'
 import { addComputer, removeComputer } from '../../redux/actions'
 
@@ -9,7 +9,6 @@ class Computer extends Component {
     this.state = {
       newComputer: "",
       isToggle: false,
-      date: new Date().toLocaleDateString(),
     }
   }
 
@@ -35,20 +34,16 @@ class Computer extends Component {
 
     return <div>
       <h1>Computers</h1>
+      <strong style={{ margin: '2%' }}>Name:</strong><input placeholder="Enter computer here" type="text" onChange={this.setValue} value={this.state.newComputer} />
+      <button onClick={() => this.addComputer(this.state.newComputer)} style={{ margin: "5px", backgroundColor: 'orange', color: 'black' }}>Add Computer</button>
       {computers.map(c => <div>
-        <div><h3>Name:</h3> 
-        </div>
-        <div style={{margin: '1rem'}}>{c.name}</div>
-        <h4>Date:</h4> {this.state.date}
-        <div>
-        </div>
-        <div>
-          <button onClick={() => this.props.removeComputer(c.name)} 
-          style={{ backgroundColor: '#4CAF50', color: 'white'}}> Remove Computer</button>
-        </div>
+        <div><h3>Name:<strong style={{padding:'3%'}}>{c.name}</strong></h3>   <h3>Date:<strong style={{padding: '3%'}}>{c.date}</strong></h3></div>
+        <div style={{ padding: '3%' }}> </div>
+
+        <button onClick={() => this.props.removeComputer(c.name)}
+          style={{ backgroundColor: 'purple', color: 'white' }}> Remove Computer</button>
       </div>)}
-      <input placeholder="Enter computer here" type="text" onChange={this.setValue} value={this.state.newComputer} />
-      <button onClick={() => this.addComputer(this.state.newComputer)} style={{ margin: "5px" }}>Add Computer</button>
+
     </div>
   }
 }

@@ -8,10 +8,10 @@ class Books extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      date: new Date().toLocaleDateString(),
       isToggle: false,
       editId: "",
-      editAuthor: ""
+      editAuthor: "",
+      newBook: ""
     }
   }
 
@@ -44,33 +44,40 @@ class Books extends Component {
     });
   }
 
+  setValue = (e) => {
+    this.setState({ newBook: e.target.value })
+  }
+
+
   render() {
     const { isToggle, name, author, editAuthor, editId } = this.state;
     const { availableBooks } = this.props;
     return <div className="books"><h1>Books</h1>
+      <strong style={{ margin: '0.5' }}>Name here :</strong>
+      <input placeholder="Enter name here" type="text" style={{ margin: '0.8%' }}
+        onChange={e => this.setState({ name: e.target.value })} />
+      <strong style={{ margin: '0.5%' }}>Author here :</strong>
+      <input placeholder="Enter author here" style={{ margin: '0.8%' }}
+        type="text"
+        onChange={e => this.setState({ author: e.target.value })} />
+      <button onClick={() => this.addBook(name, author)} style={{ backgroundColor: 'orange', color: 'black', position: 'revert' }}>Add</button>
+      {isToggle !== false ? <div>
+        <input type="text"
+        style={{margin: '3%'}}
+          value={editAuthor}
+          onChange={e => this.setState({ editAuthor: e.target.value })} />
+        <button onClick={() => this.editContent(editAuthor, editId)} style={{ backgroundColor: 'orange', color: 'black' }}>Save</button>
+      </div> : null}
       {availableBooks.map(book => <div style={{ margin: '2rem', wordSpacing: '5px' }}
-        key={book.name}><strong>Name:</strong> {book.name} <strong>Author:</strong> {book.author} <ul>{this.state.date}</ul>
-        <div>
-          <button onClick={() => this.props.removeBook(book.name, book.author)}>Remove Book</button>
-          <button onClick={() => this.setEditState(book.author, book.id)}>Edit</button>
+        key={book.name}><strong>Name:</strong> {book.name} <strong>Author:</strong> {book.author} <h3>Date: {book.date}<ul></ul></h3>
+        <button onClick={() => this.props.removeBook(book.name, book.author)} style={{ backgroundColor: 'purple', color: 'white', margin: '2%' }}>Remove Book</button>
+        <button onClick={() => this.setEditState(book.author, book.id)} style={{ backgroundColor: 'orange', color: 'black' }}>Edit</button>
+        <div className='book-buttons'>
         </div>
       </div>)
       }
-      {isToggle !== false ? <div>
-        <input type="text"
-          value={editAuthor}
-          onChange={e => this.setState({ editAuthor: e.target.value })} />
-        <button onClick={() => this.editContent(editAuthor, editId)}>Save</button>
-      </div> : null}
-      <label>Name here :</label>
-      <input placeholder="Enter name here" type="text" style={{ margin: '1px' }} onChange={e => this.setState({ name: e.target.value })} />
-      <label>Author here :</label>
-      {/* <div> */}
-      <input placeholder="Enter author here" style={{ margin: '1rem' }}
-        type="text"
-        onChange={e => this.setState({ author: e.target.value })} />
-      <button onClick={() => this.addBook(name, author)}>Add</button>
-      {/* </div> */}
+
+
     </div>
   }
 
