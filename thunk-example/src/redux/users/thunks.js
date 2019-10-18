@@ -8,7 +8,6 @@ export const getAllUsers = () => {
 }
 
 export const addUser = (user) => {
-  console.log('asdf', user)
   return {
     type: "ADD_USER",
     payload: user
@@ -16,7 +15,6 @@ export const addUser = (user) => {
 }
 
 export const removeUser = (user) => {
-  console.log('ace', user)
   return {
     type: "REMOVE_USER",
     payload: user

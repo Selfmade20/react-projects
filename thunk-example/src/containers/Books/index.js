@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addBook, removeBook, editContent } from '../../redux/actions';
+import { addBook, removeBook, editContent } from '../../redux/./actions/books actions';
 import availableBooks from '../../redux/books/reducer';
 
 
@@ -27,7 +27,7 @@ class Books extends Component {
     const { availableBooks } = this.props;
 
     for (var i in availableBooks) {
-      if (availableBooks[i].author == author.trim()) {
+      if (availableBooks[i].author == author.trim().toUpperCase()) {
         alert('Found existing Author')
         return
       }

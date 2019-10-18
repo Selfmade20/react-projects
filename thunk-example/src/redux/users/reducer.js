@@ -11,12 +11,12 @@ export default function counter(state = initialState, action) {
   switch (action.type) {
     case "ADD_USERS": {
       if (state.initialState === 0) {
-        return { ...state, all: action.payload, id: 1, date: new Date().toLocaleTimeString()}
+        return { ...state, all: action.payload, id: 1, date: new Date().toLocaleTimeString() }
       }
       return { ...state, all: action.payload }
     }
     case "ADD_USER": {
-      const newState = {...state, all: [...state.all, action.payload], id: 1, date: new Date().toLocaleTimeString() }
+      const newState = { ...state, all: [...state.all, action.payload], id: 1, date: new Date().toLocaleTimeString() }
       return newState;
     }
     case "REMOVE_USER": {

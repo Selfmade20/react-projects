@@ -1,6 +1,6 @@
 import React, {  Component } from 'react';
 import { connect } from 'react-redux'
-import { addComputer, removeComputer } from '../../redux/actions'
+import { addComputer, removeComputer } from '../../redux/actions/computer actions';
 
 
 class Computer extends Component {
@@ -20,8 +20,8 @@ class Computer extends Component {
     const { computers } = this.props;
 
     for (var i in computers) {
-      if (computers[i].name == computer) {
-        alert("Match found")
+      if (computers[i].name == computer.trim()) {
+        alert("Computer already exists")
         return
       }
     }
