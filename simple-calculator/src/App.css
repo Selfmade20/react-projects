@@ -1,0 +1,27 @@
+.result {
+  height: 60px;
+  background-color: #bbb;
+  width: 100%;
+}
+
+.result p {
+  font-size: 40px;
+  margin: 5px;
+
+}
+.App{
+  font-size: 50px;
+  text-align: center;
+}
+
+
+.button {
+  display: block;
+  background-color: #bbb;
+}
+
+button {
+  width: 10%;
+  height: 60px;
+  font-size: 30px;
+}
