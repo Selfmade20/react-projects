@@ -2,11 +2,13 @@ import React from 'react';
 import './App.css';
 import Keypad from './Components/Keypad';
 import Results from './Components/Results';
+import Logic from './Components/Logic';
+
 
 function App() {
   return (
     <div className="App">
-      <div>Simple Calculator</div>
+    <Logic/>
     <Keypad/>
     <Results/>
     </div>
