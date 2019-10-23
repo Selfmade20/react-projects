@@ -1,6 +1,6 @@
 .result {
   height: 60px;
-  background-color: #bbb;
+  background-color:lightblue;
   width: 100%;
 }
 
@@ -9,11 +9,11 @@
   margin: 5px;
 
 }
-.App{
-  font-size: 50px;
-  text-align: center;
-}
 
+.calculator-body {
+  max-width: 400px;
+  margin: auto;
+}
 
 .button {
   display: block;
@@ -21,7 +21,7 @@
 }
 
 button {
-  width: 10%;
+  width: 25%;
   height: 60px;
   font-size: 30px;
 }

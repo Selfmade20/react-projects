@@ -1,6 +1,6 @@
-import React from 'react';
+import React, {Component} from 'react';
 
-class Results extends React.Component {
+class ResultComponent extends Component {
 
 
     render() {
@@ -15,4 +15,5 @@ class Results extends React.Component {
 }
 
 
-export default Results;
+export default ResultComponent;
+
