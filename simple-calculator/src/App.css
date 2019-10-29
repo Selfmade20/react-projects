@@ -1,6 +1,6 @@
 .result {
   height: 60px;
-  background-color:lightblue;
+  background-color:black;
   width: 100%;
 }
 
@@ -8,6 +8,7 @@
   font-size: 40px;
   margin: 5px;
   text-align: right;
+  color: white;
 
 }
 
@@ -25,5 +26,5 @@ button {
   width: 25%;
   height: 60px;
   font-size: 30px;
-  background-color: peru;
+  background-color: grey;
 }

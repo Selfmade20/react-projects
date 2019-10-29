@@ -4,7 +4,7 @@ import ResultComponent from './components/ResultComponent';
 import KeyPadComponent from "./components/KeyPadComponent";
 
 class App extends Component {
-    constructor(){
+    constructor() {
         super();
 
         this.state = {
@@ -14,15 +14,12 @@ class App extends Component {
 
     onClick = button => {
 
-        if(button === "="){
+        if (button === "=") {
             this.calculate()
         }
 
-        else if(button === "C"){
+        else if (button === "AC") {
             this.reset()
-        }
-        else if(button === "CE"){
-            this.backspace()
         }
 
         else {
@@ -35,8 +32,8 @@ class App extends Component {
 
     calculate = () => {
         var checkResult = ''
-        if(this.state.result.includes('--')){
-            checkResult = this.state.result.replace('--','+')
+        if (this.state.result.includes('--')) {
+            checkResult = this.state.result.replace('--', '+')
         }
 
         else {
@@ -45,12 +42,11 @@ class App extends Component {
 
         try {
             this.setState({
-                // eslint-disable-next-line
-                result: (eval(checkResult) || "" ) + ""
+                result: (eval(checkResult) || "") + ""
             })
         } catch (e) {
             this.setState({
-                result: "error"
+                result: "Invalid inputs"
             })
 
         }
@@ -72,9 +68,9 @@ class App extends Component {
         return (
             <div>
                 <div className="calculator-body">
-                    <h1>Simple Calculator</h1>
-                    <ResultComponent result={this.state.result}/>
-                    <KeyPadComponent onClick={this.onClick}/>
+                    <h1 style={{fontFamily: 'Verdana'}}>Simple Calculator</h1>
+                    <ResultComponent result={this.state.result} />
+                    <KeyPadComponent onClick={this.onClick} />
                 </div>
             </div>
         );
