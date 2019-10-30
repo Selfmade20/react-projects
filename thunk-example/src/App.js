@@ -1,9 +1,9 @@
 import React from 'react';
 import './App.css';
 import Toolbar from './Components/Toolbar/Toolbar'
-import Users from './containers/Users'
-import Books from './containers/Books'
-import Computers from './containers/Computers';
+import Users from './Containers/Users'
+import Books from './Containers/Books'
+import Computers from './Containers/Computers';
 import SideDrawer from './Components/SideDrawer/SideDrawer';
 import Backdrop from './Components/Backdrop/Backdrop';
 

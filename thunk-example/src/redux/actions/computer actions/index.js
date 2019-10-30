@@ -1,9 +1,9 @@
 
 
-export function removeComputer(name) {
+export function removeComputer(id) {
     return {
         type: "REMOVE_COMPUTER",
-        payload: { name }
+        payload: { id }
     }
 }
 

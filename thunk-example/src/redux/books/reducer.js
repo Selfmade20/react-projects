@@ -19,7 +19,7 @@ export default function books(state = initialState, action) {
       }
     }
     case "REMOVE_BOOK": {
-      return { availableBooks: [...state.availableBooks.filter(book => book.name !== action.payload.name)] }
+      return { availableBooks: [...state.availableBooks.filter(book => book.id !== action.payload.id)] }
     }
     case "EDIT_CONTENT": {
       const indexOfPosition = state.availableBooks.findIndex(book => book.id == action.payload.name.id);

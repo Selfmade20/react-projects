@@ -1,4 +1,4 @@
-import Users from "../../containers/Users"
+import Users from "../../Containers/Users"
 
 const initialState = {
   all: [],
@@ -20,7 +20,7 @@ export default function counter(state = initialState, action) {
       return newState;
     }
     case "REMOVE_USER": {
-      return { all: [...state.all.filter(user => user['first_name'] !== action.payload)] }
+      return { all: [...state.all.filter(user => user.id !== action.payload.id)] }
     }
     default:
       return state

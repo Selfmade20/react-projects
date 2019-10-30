@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addBook, removeBook, editContent } from '../../redux/./actions/books actions';
+import { addBook, removeBook, editContent } from '../../redux/actions/books actions';
 import availableBooks from '../../redux/books/reducer';
 
 
@@ -63,7 +63,7 @@ class Books extends Component {
       <button onClick={() => this.addBook(name, author)} style={{ backgroundColor: 'orange', color: 'black', position: 'revert' }}>Add</button>
       {isToggle !== false ? <div>
         <input type="text"
-        style={{margin: '3%'}}
+          style={{ margin: '3%' }}
           value={editAuthor}
           onChange={e => this.setState({ editAuthor: e.target.value })} />
         <button onClick={() => this.editContent(editAuthor, editId)} style={{ backgroundColor: 'orange', color: 'black' }}>Save</button>

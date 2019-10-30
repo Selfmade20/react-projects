@@ -18,7 +18,7 @@ export default function addComputer(state = initialState, action) {
        {name :action.payload.name, id: state.computers[state.computers.length -1].id +1 , date: new Date().toLocaleTimeString()}]}
     
     case "REMOVE_COMPUTER": {
-      return { computers: [...state.computers.filter(computer => computer.name !== action.payload.name) ]}
+      return { computers: [...state.computers.filter(computer => computer.id !== action.payload.id) ]}
     }
     case "EDIT_CONTENT": {
       return state

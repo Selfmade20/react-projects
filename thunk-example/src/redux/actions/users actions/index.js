@@ -5,9 +5,9 @@ export function addUser(name) {
     }
 }
 
-export function removeUser(name) {
+export function removeUser(id) {
     return {
         type: "REMOVE_USER",
-        payload: name
+        payload: id
     }
 }

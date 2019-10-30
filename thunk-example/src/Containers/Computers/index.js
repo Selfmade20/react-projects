@@ -40,7 +40,7 @@ class Computer extends Component {
         <div><h3>Name:<strong style={{padding:'3%'}}>{c.name}</strong></h3>   <h3>Date:<strong style={{padding: '3%'}}>{c.date}</strong></h3></div>
         <div style={{ padding: '3%' }}> </div>
 
-        <button onClick={() => this.props.removeComputer(c.name)}
+        <button onClick={() => this.props.removeComputer(c.id)}
           style={{ backgroundColor: 'purple', color: 'white' }}> Remove Computer</button>
       </div>)}
 

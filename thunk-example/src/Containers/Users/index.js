@@ -23,11 +23,11 @@ class Users extends Component {
     const { user } = this.props;
 
     for (var i in user) {
-      if (user[i].name === users){
+      if (user[i].name === users) {
         alert("User already exists")
       }
     }
-    this.props.addUser({ first_name: this.state.newUser },users)
+    this.props.addUser({ first_name: this.state.newUser }, users)
     this.setState({ newUser: '' })
   }
 
@@ -39,7 +39,7 @@ class Users extends Component {
       <button onClick={this.addUser} style={{ backgroundColor: 'orange', color: 'black', justifyContent: 'space-around' }}>Add User</button>
       {users.map(u => <div style={{ padding: '3%' }}> <strong>Name: </strong>{u["first_name"]}
         <div className='remove-user-button'>
-          <button onClick={() => this.props.removeUser(u["first_name"])}
+          <button onClick={() => this.props.removeUser(u.id)}
             style={{ margin: '4%', backgroundColor: 'purple', color: 'white', }}> Remove User</button>
         </div>
       </div>)}

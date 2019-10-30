@@ -4,10 +4,10 @@ export function addBook(name) {
         payload: { name }
     }
 }
-export function removeBook(name) {
+export function removeBook(id) {
     return {
         type: "REMOVE_BOOK",
-        payload: name
+        payload: id
     }
 }
 
