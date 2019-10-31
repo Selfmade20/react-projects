@@ -8,7 +8,10 @@ class App extends Component {
         super();
 
         this.state = {
-            result: ""
+            result: "",
+            previousNumber: "",
+            currentNumber: "",
+            operator: ""
         }
     }
 
@@ -40,17 +43,20 @@ class App extends Component {
             checkResult = this.state.result
         }
 
-        try {
-            this.setState({
-                result: (eval(checkResult) || "") + ""
-            })
-        } catch (e) {
-            this.setState({
-                result: "Invalid inputs"
-            })
 
-        }
-    };
+    add = () => {
+        this.state.previousNumber = this.state.result;
+        this.setState({result: ""});
+        this.state.operator = "plus"
+    }
+
+    evaluate = () => {
+        this.state.currentNumber = this.state.result;
+        if(this.state.operator ==  "plus"){
+            input: parseInt(this.state.previousNumber) + 
+            parseInt(this.state.currentNumber)
+        }}
+    }
 
     reset = () => {
         this.setState({
@@ -71,6 +77,9 @@ class App extends Component {
                     <h1 style={{fontFamily: 'Verdana'}}>Simple Calculator</h1>
                     <ResultComponent result={this.state.result} />
                     <KeyPadComponent onClick={this.onClick} />
+                    <button name="plus" onClick={this.add}>+</button>
+                    <button name="=" onClick={this.evaluate}>=</button>
+
                 </div>
             </div>
         );
