@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addBook, removeBook, editContent } from '../../redux/actions/books actions';
-import availableBooks from '../../redux/books/reducer';
+
 
 
 class Books extends Component {
@@ -70,7 +70,7 @@ class Books extends Component {
       </div> : null}
       {availableBooks.map(book => <div style={{ margin: '2rem', wordSpacing: '5px' }}
         key={book.name}><strong>Name:</strong> {book.name} <strong>Author:</strong> {book.author} <h3>Date: {book.date}<ul></ul></h3>
-        <button onClick={() => this.props.removeBook(book.name, book.author)} style={{ backgroundColor: 'purple', color: 'white', margin: '2%' }}>Remove Book</button>
+        <button onClick={() => this.props.removeBook(book.id)} style={{ backgroundColor: 'purple', color: 'white', margin: '2%' }}>Remove Book</button>
         <button onClick={() => this.setEditState(book.author, book.id)} style={{ backgroundColor: 'orange', color: 'black' }}>Edit</button>
         <div className='book-buttons'>
         </div>
@@ -91,8 +91,8 @@ const mapDispatchToProps = dispatch => ({
   addBook: (name, author) =>
     dispatch(addBook({ name, author })
     ),
-  removeBook: (name, author) =>
-    dispatch(removeBook({ name, author })
+  removeBook: (id) =>
+    dispatch(removeBook({ id })
     ),
   editContent: (name, id) =>
     dispatch(editContent({ name, id })

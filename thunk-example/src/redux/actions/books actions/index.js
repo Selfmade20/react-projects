@@ -11,7 +11,7 @@ export function removeBook(id) {
     }
 }
 
-export function editContent(name, id) {
+export function editContent(name) {
     return {
         type: "EDIT_CONTENT",
         payload: { name }

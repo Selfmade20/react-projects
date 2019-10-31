@@ -19,15 +19,16 @@ class Users extends Component {
     this.setState({ newUser: e.target.value })
   }
 
-  addUser = (users) => {
-    const { user } = this.props;
-
-    for (var i in user) {
-      if (user[i].name === users) {
+  addUser = () => {
+    const { users } = this.props;
+    
+    for (var i in users) {
+      if (users[i]["first_name"] === this.state.newUser) {
         alert("User already exists")
+        return
       }
     }
-    this.props.addUser({ first_name: this.state.newUser }, users)
+    this.props.addUser({ first_name: this.state.newUser })
     this.setState({ newUser: '' })
   }
 
@@ -36,7 +37,7 @@ class Users extends Component {
     return <div>
       <h1>Users</h1>
       <strong>Name:</strong><input placeholder="Enter user here" style={{ margin: '1%', padding: '1%' }} type="text" onChange={this.setValue} value={this.state.newUser} />
-      <button onClick={this.addUser} style={{ backgroundColor: 'orange', color: 'black', justifyContent: 'space-around' }}>Add User</button>
+      <button onClick={() => this.addUser()} style={{ backgroundColor: 'orange', color: 'black', justifyContent: 'space-around' }}>Add User</button>
       {users.map(u => <div style={{ padding: '3%' }}> <strong>Name: </strong>{u["first_name"]}
         <div className='remove-user-button'>
           <button onClick={() => this.props.removeUser(u.id)}

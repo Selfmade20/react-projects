@@ -4,39 +4,17 @@ import Toolbar from './Components/Toolbar/Toolbar'
 import Users from './Containers/Users'
 import Books from './Containers/Books'
 import Computers from './Containers/Computers';
-import SideDrawer from './Components/SideDrawer/SideDrawer';
-import Backdrop from './Components/Backdrop/Backdrop';
 
 
 class App extends React.Component {
 
-  state = {
-    sideDrawerOpen: false
-  };
-
-  drawerToggleClickHandler = () => {
-    this.setState((prevState) => {
-      return { sideDrawerOpen: !prevState.sideDrawerOpen }
-    })
-  }
-
-  backdropClickHandler = () => {
-    this.setState({ sideDrawerOpen: false });
-  }
-
+  
   render() {
-    let sideDrawer;
-    let backdrop;
-
-    if (this.state.sideDrawerOpen) {
-      sideDrawer = <SideDrawer />
-      backdrop = <Backdrop click={this.backdropClickHandler} />
-    }
+    
     return (
       <div style={{ height: '100%' }}>
         <Toolbar drawerClickHandler={this.drawerToggleClickHandler} />
-        {sideDrawer}
-        {backdrop}
+       
         <main style={{ marginTop: '4%' }}>
         </main>
         <div className="container">
