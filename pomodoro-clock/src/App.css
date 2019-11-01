@@ -1,0 +1,67 @@
+main {
+  display: flex;
+  flex-direction: column;
+  height: 90vh;
+  align-items: center
+}
+
+h1 {
+  font-size: 3rem;
+  font-weight: 300 ;
+}
+
+h4 {
+  text-align: center;
+  font-size: 20px;
+  font-weight: 200;
+  font-family: Times;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.timer-container{
+  border: 2px solid grey;
+  margin-top: 40px;
+  border-radius: 25px;
+  width: 250px;
+  text-align: center;
+  box-shadow: 0 2px 4px black;
+  padding: 10px;
+}
+
+.interval-container{
+  display: flex;
+  margin: 0 40px;
+  align-items: center;
+}
+
+.interval-section-container{
+  display: flex;
+}
+
+button{
+  padding: 5px 10px;
+  margin: 0 10px;
+  height: 25px;
+  background-color: orange;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  color: black;
+  width: 70px;
+  border-radius: 2px;
+}
+
+.interval-length{
+  font-size: 2rem;
+  margin: 0 10px;
+}
+
+.timer{
+  font-size: 2rem;
+  font-weight: 200;
+}
+.timer-actions {
+ margin-top: 20px;
+ text-align: center; 
+}
