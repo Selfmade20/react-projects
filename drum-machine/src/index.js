@@ -14,23 +14,31 @@ class App extends React.Component {
 
   handleDisplay = display => this.setState({ display });
 
+  onMouseEnter = () => {
+    document.body.style.cursor = "pointer";
+  }
+  onMouseLeave = () => {
+    document.body.style.cursor = "default";
+  }
+
+
   render() {
     return (
-        <div id="drum-machine">
-          <div id="display">{this.state.display}</div>
-          <div id="drum-pads">
-            {data.map(d => (
-              <DrumPad 
-                key={d.id}
-                id={d.id}
-                letter={d.letter}
-                src={d.src}
-                keyCode={d.keyCode}
-                handleDisplay={this.handleDisplay}
-              />
-            ))}
-          </div>
+      <div id="drum-machine">
+        <div id="display">{this.state.display}</div>
+        <div id="drum-pads">
+          {data.map(d => (
+            <DrumPad
+              key={d.id}
+              id={d.id}
+              letter={d.letter}
+              src={d.src}
+              keyCode={d.keyCode}
+              handleDisplay={this.handleDisplay}
+            />
+          ))}
         </div>
+      </div>
     )
   }
 }

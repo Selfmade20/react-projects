@@ -17,6 +17,7 @@ class DrumPad extends React.Component {
     }
   }
 
+  
   playSound = () => {
     this.audio.play();
     this.audio.currentTime = 0;
@@ -24,7 +25,7 @@ class DrumPad extends React.Component {
 
     let target = document.getElementById(this.props.id);
     target.classList.add('drum-pad-active');
-    setTimeout( () => {
+    setTimeout(() => {
       target.classList.remove('drum-pad-active');
     }, 100);
 
@@ -38,8 +39,8 @@ class DrumPad extends React.Component {
         onClick={this.playSound}
       >
         <h2>{this.props.letter}</h2>
-      
-        <audio 
+
+        <audio
           className="clip"
           id={this.props.letter
           }
