@@ -40,6 +40,7 @@ h4 {
 }
 
 button{
+  font-size: 1rem;
   padding: 5px 10px;
   margin: 0 10px;
   height: 25px;
@@ -64,4 +65,10 @@ button{
 .timer-actions {
  margin-top: 20px;
  text-align: center; 
+}
+
+.github{
+  margin: 2px;
+  padding: 1%;
+  text-align: center;;
 }
