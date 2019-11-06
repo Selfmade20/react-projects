@@ -3,7 +3,7 @@ import BreakInterval from './Components/BreakInterval';
 import SessionLength from './Components/SessionLength';
 import Timer from './Components/Timer'
 import './App.css';
-import { timingSafeEqual } from 'crypto';
+
 
 class App extends React.Component {
   constructor(props) {
@@ -18,6 +18,8 @@ class App extends React.Component {
     this.onDecreaseBreakLength = this.onDecreaseBreakLength.bind(this);
     this.onIncreaseSessionLength = this.onIncreaseSessionLength.bind(this);
     this.onDecreaseSessionLength = this.onDecreaseSessionLength.bind(this)
+    this.onToggleInterval = this.onToggleInterval.bind(this)
+    this.onUpdateTimerMinute = this.onUpdateTimerMinute.bind(this)
   }
 
 
@@ -47,10 +49,32 @@ class App extends React.Component {
   onDecreaseSessionLength() {
     this.setState((prevState) => {
       return {
-        sessionLength: prevState.sessionLength - 1
+        sessionLength: prevState.sessionLength - 1,
+        timerMinute: prevState.sessionLength - 1
       }
     })
   }
+
+  onUpdateTimerMinute() {
+    this.setState(prevState => {
+      return {
+        timerMinute: prevState.timerMinute - 1
+      }
+    })
+  }
+
+  onToggleInterval(isSession) {
+    if (isSession) {
+      this.setState({
+        timerMinute: this.state.timerMinute - 1
+      })
+    } else {
+      this.setState({
+        timerMinute: this.state.breakLength
+      })
+    }
+  }
+
 
 
   render() {
@@ -71,8 +95,10 @@ class App extends React.Component {
         </section>
         <Timer
           timerMinute={this.state.timerMinute}
-
-        />
+          breakTimer={this.state.breakLength}
+          onUpdateTimerMinute={this.onUpdateTimerMinute}
+          toggleInterval={this.state.onToggleInterval}
+          />
       </main>
     );
   }

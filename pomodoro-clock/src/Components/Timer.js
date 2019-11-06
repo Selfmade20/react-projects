@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 class Timer extends React.Component {
     constructor() {
         super();
@@ -7,10 +8,19 @@ class Timer extends React.Component {
         this.state = {
             isSession: true,
             timerSecond: 10,
-            timerMinute: 80
+            timerMinute: 80,
+            intervalId: 0
         }
+        this.play = this.play.bind(this)
     }
 
+    play () {
+        let intervalId = setInterval(this.decreaseTimer, 1000)
+
+        this.setState({
+            intervalId: intervalId
+        })
+    }
 
     render() {
         return (
@@ -24,9 +34,9 @@ class Timer extends React.Component {
                             this.state.timerSecond : this.state.timerSecond}</span>
                 </section>
                 <section className="timer-actions">
-                    <button>Start</button>
-                    <button>Pause</button>
-                    <button>Reset</button>
+                    <button onClick={this.start}>Start</button>
+                    <button onClick={this.pause}>Pause</button>
+                    <button onClick={this.reset}>Reset</button>
                 </section>
             </section>
         )
