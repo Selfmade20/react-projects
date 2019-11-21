@@ -1,10 +1,11 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Home } from './components/Home';
-import { About } from './components/About';
+import  Posts  from './components/Posts';
 import { Contact } from './components/Contact';
 import { NoMatch } from './components/NoMatch';
 import { NavigationBar } from './components/NavigationBar';
+import User from './Containers/User/index';
 
 
 
@@ -16,11 +17,12 @@ function App() {
       <Router>
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route path="/about" component={About} />
+          <Route path="/posts" component={Posts} />
           <Route path="/contact" component={Contact} />
           <Route component={NoMatch} />
         </Switch>
       </Router>
+      <User/>
     </React.Fragment>
   );
 }
