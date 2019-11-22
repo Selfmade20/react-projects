@@ -1,10 +1,15 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import axios from 'axios'
 import styled from 'styled-components';
+//import User from '../Containers/User/index'
 
 
 const Styles = styled.div`
-.
+.user_data {
+    font-size: 20rem
+
+}
+
 
 `
 
@@ -16,7 +21,7 @@ class Posts extends Component {
         }
     }
 
-    
+
 
     componentDidMount() {
         axios.get("http://ac88a44a6935711e982b602f197ebe6f-1529281652.eu-west-2.elb.amazonaws.com/person/")
@@ -33,13 +38,15 @@ class Posts extends Component {
         const dataList = data.length ? (
             data.map(data => {
                 return (
-                    <div className="conta" key={data.uuid}>
+                    <div className="data" >
                         <div>
-                            <span>{data.name}</span>
-                            <p>{data.message}</p>
+                            <li>
+                                <span>Name : {data.name}</span>
+                                <p>Message : {data.message}</p>
+                            </li>
                         </div>
-
                     </div>
+
                 )
             })
         ) : (
@@ -48,13 +55,24 @@ class Posts extends Component {
 
 
         return (
-            <div className="container">
-                <h2>Data</h2>
-                {dataList}
+            <div className="user_data">
+ 
+                <div style={{ color: "orange", margin: '2rem' }}>{dataList}</div>
+                <input value={this.name} onChange={this.handleChange} style={{
+                    width: "40%",
+                    height: "100px",
+                    borderRadius: "4px",
+                    margin: "1%",
+                    resize: "none"
+                }} />
+
+                <button >Post</button> 
+            
 
             </div>
         )
     }
 }
+
 
 export default Posts

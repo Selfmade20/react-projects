@@ -1,23 +1,29 @@
-import User from "../../Containers/User/index";
-
+//import User from '../../Containers/User'
 
 const initialState = {
-    all: [],
-    id: "1"
+    userNames: [
+        {
+            name: "",
+            id: 1
+        }
+    ],
+
 }
 
-export default function counter(state = initialState, action) {
+export default function namesOfUsers(state = initialState, action) {
     switch (action.type) {
         case "ENTER_USERS": {
-
-            return { ...state, all: action.payload }
+            const {name} = action.payload;
+            return { ...state, userNames: [...state.userNames,{
+              name:name  
+            }]}
         }
 
-        case "ENTER_USER": {
-            const newState = {...state, all: [...state.all, action.payload], id: 1}
-            return newState;
-        }
-        default: 
-        return state;
+        // case "ENTER_USER": {
+        //     const newState = { ...state, all: [...state.all, action.payload] }
+        //     return newState;
+        // }
+        default:
+            return state;
     }
 }

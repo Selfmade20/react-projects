@@ -13,3 +13,10 @@ export const enterName = (name) => {
         payload: name,
     }
 }
+
+export const addPost = (post) => {
+    return {
+        type: "ENTER_POST",
+        payload: post,
+    }
+}
