@@ -5,7 +5,7 @@ import  Posts  from './components/Posts';
 import { Contact } from './components/Contact';
 import { NoMatch } from './components/NoMatch';
 import { NavigationBar } from './components/NavigationBar';
-import User from './Containers/User/index';
+
 
 
 
@@ -22,7 +22,6 @@ function App() {
           <Route component={NoMatch} />
         </Switch>
       </Router>
-      <User/>
     </React.Fragment>
   );
 }
