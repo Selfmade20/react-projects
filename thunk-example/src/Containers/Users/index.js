@@ -35,7 +35,7 @@ class Users extends Component {
   render() {
     const { users } = this.props
     return <div>
-      <h1>Users</h1>
+      <h1>User</h1>
       <strong>Name:</strong><input placeholder="Enter user here" style={{ margin: '1%', padding: '1%' }} type="text" onChange={this.setValue} value={this.state.newUser} />
       <button onClick={() => this.addUser()} style={{ backgroundColor: 'orange', color: 'black', justifyContent: 'space-around' }}>Add User</button>
       {users.map(u => <div style={{ padding: '3%' }}> <strong>Name: </strong>{u["first_name"]}
