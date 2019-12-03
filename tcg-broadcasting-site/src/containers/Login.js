@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import styled from 'styled-components'
-import { enterName } from '../../redux/actions/user actions/index'
-import { Link } from 'react-router-dom'
+import { enterName } from '../redux/actions/user actions/index'
+import { NavLink } from 'react-router-dom'
 
 class Login extends Component {
     constructor(props) {
@@ -31,23 +31,31 @@ class Login extends Component {
     render() {
 
         const Styles = styled.div`
+        .login {
+            margin: 20rem,
+
+        }
+        .button {
+            font-size: 20px;
+        }
     
         `
 
         return (
-            <div>
+            <Styles>
                 <label>Name</label>
                 <input
                     type="text"
-                    className="login_form"
+                    className="login"
                     name="name"
                     placeholder="Enter your name below"
                     onChange={this.handleChange}
                 />
-                {/* <Link >
-                    <button onClick={() => this.addName}></button>
-                </Link> */}
-                </div>
+
+                <button className="button" onClick={() => this.addName}></button>
+
+            </Styles>
+
         )
     }
 
@@ -58,7 +66,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => {
-    return{
+    return {
         enterName: name => {
             dispatch(enterName(name));
         }
