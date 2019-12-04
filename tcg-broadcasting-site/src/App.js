@@ -1,17 +1,27 @@
-import React, { Component } from 'react';
-import NavigationBar from './components/NavigationBar';
-import Login from  './containers/Login'
+import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Posts from './containers/Posts'
+import { Home } from './components/Home';
+import  Posts  from './components/Posts';
+import { NoMatch } from './components/NoMatch';
+import { NavigationBar } from './components/NavigationBar';
 
 
 
-class App extends Component {
-  render() {
-    return (
-      < Login />
-    );
-  }
+
+
+function App() {
+  return (
+    <React.Fragment>
+      <NavigationBar />
+      <Router>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/posts" component={Posts} />
+          <Route component={NoMatch} />
+        </Switch>
+      </Router>
+    </React.Fragment>
+  );
 }
 
 export default App;

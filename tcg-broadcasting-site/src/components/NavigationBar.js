@@ -1,16 +1,31 @@
 import React from 'react';
-import './NavigationBar.css';
+import { Nav, Navbar } from 'react-bootstrap';
+import styled from 'styled-components';
 
 
-const NavigationBar = props => (
-    <header className='toolbar'>
-        <nav className='toolbar_navigation'>
-            <div>
-            </div>
-            <div className='toolbar_logo'><a href='/'>@ THE CODING GROUND</a></div>
-            
-        </nav>
-    </header>
-);
+const Styles = styled.div`
+.navbar {
+   background-color: #222;
+}
 
-export default NavigationBar;
+.navbar-brand, .navbar-nav .nav-link {
+    color: #bbb;
+
+    &:hover {
+        color: white;
+    }
+}
+
+`;
+
+export const NavigationBar = () => (
+    <Styles>
+        <Navbar expand="lg">
+            <Navbar.Brand href="/">The Coding Ground</Navbar.Brand>
+            <Nav className="ml-auto">
+                <Nav.Item><Nav.Link href="/">Home</Nav.Link></Nav.Item>
+                <Nav.Item><Nav.Link href="/posts">Posts</Nav.Link></Nav.Item>
+            </Nav>
+        </Navbar>
+    </Styles>
+)

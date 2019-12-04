@@ -27,7 +27,7 @@ class Books extends Component {
     const { availableBooks } = this.props;
 
     for (var i in availableBooks) {
-      if (availableBooks[i].author == author.trim().toUpperCase()) {
+      if (availableBooks[i].author === author.trim().toUpperCase()) {
         alert('Found existing Author')
         return
       }

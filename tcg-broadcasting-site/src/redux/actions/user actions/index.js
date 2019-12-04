@@ -10,4 +10,4 @@ export function enterMessage(message) {
         type: "ENTER_MESSAGE",
         payload: message
     }
- }
+}
