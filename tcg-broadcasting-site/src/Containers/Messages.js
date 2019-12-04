@@ -14,6 +14,7 @@ class  Messages extends Component {
 
     componentDidMount() {
         this.props.getAllData()
+        console.log("Hello",getAllData)
     }
 
     setValue = (event) => {
@@ -34,7 +35,6 @@ class  Messages extends Component {
     }
 
     render(){
-        const { messages } = this.props
 
     return(
         <div>
@@ -42,7 +42,9 @@ class  Messages extends Component {
           <label>Message</label>
           <input placeholder="Enter message here" onChange={this.setValue} value={this.state.newMessage} />
           <button onClick={() => this.enterMessage()}>Post</button>
-          {messages.map(message => {message["message"]})}
+          <div>
+          {this.props.messages.map(message => message["message"])}
+          </div>
         </div>
     )
     }    
