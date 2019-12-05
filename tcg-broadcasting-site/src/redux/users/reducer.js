@@ -15,7 +15,7 @@ export default function listOfUsers(state = initialState, action) {
         case "ADD_USER": {
             const { name } = action.payload;
             return {
-                ...state, userData: [...state.userDate, {
+                ...state, userData: [...state.userData, {
                     name: name
                 }]
             }
@@ -26,6 +26,12 @@ export default function listOfUsers(state = initialState, action) {
                 ...state, messages: [...action.payload]
             }
             return newState;
+        }
+        
+        case "ENTER_NAME": {
+          const newState = {
+              ...state, name: [action.payload]
+          }
         }
 
         default:

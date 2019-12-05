@@ -2,14 +2,15 @@ export const getAllData = () => {
     return async dispatch => {
         const dataResult = await fetch('http://ac88a44a6935711e982b602f197ebe6f-1529281652.eu-west-2.elb.amazonaws.com/chat/person/')
         const data = await dataResult.json()
-
-        dispatch({type: "ADD_USER", payload: [ ...data.data] })
+        console.log("hello",data)
+        
+        dispatch({type: "ADD_USER", payload: data })
     }
 }
 
 export const enterName = (name) => {
     return {
-        type :"ENTER_USER",
+        type :"ADD_USER",
         payload: name,
     }
 }
