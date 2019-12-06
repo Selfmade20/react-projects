@@ -4,6 +4,7 @@ const initialState = {
         {
             name: "",
             messages: [],
+            posts: []
 
         }
     ],
@@ -13,11 +14,9 @@ const initialState = {
 export default function listOfUsers(state = initialState, action) {
     switch (action.type) {
         case "ADD_USER": {
-            const { name } = action.payload;
+            console.log("Data", initialState.userData)
             return {
-                ...state, userData: [...state.userData, {
-                    name: name
-                }]
+                ...state, posts: [...action.payload]
             }
         }
 

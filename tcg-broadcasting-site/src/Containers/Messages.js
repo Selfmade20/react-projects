@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getAllData } from '../redux/users/thunks';
+import { showPosts, postAdded } from '../redux/users/thunks';
 import { enterMessage } from '../redux/actions/user actions'
 
 
@@ -8,56 +8,52 @@ class Messages extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            newMessage: ""
+            newPost: ""
         }
     }
 
     componentDidMount() {
-        this.props.getAllData()
-        console.log("Hello", getAllData)
+        this.props.showPosts()
+       
     }
 
     setValue = (event) => {
-        this.setState({ newMessage: event.target.value })
+        this.setState({ newPost: event.target.value })
     }
 
     enterMessage = () => {
-        const { messages } = this.props;
+    this.props.postAdded({
+        message: this.state.newPost,
 
-        for (var i in messages) {
-            if (messages[i]["message"] === this.state.newMessage) {
-                alert("Tweet already exists")
-                return
-            }
-        }
-        this.props.enterMessage({ message: this.state.newMessage })
-        this.setState({ newUser: "" })
+    })
+    this.setState({newPost: ""})
+    this.props.showPosts()
     }
 
     render() {
-        const { message } = this.props
-        console.log("Yebow", message)
         return (
             <div>
                 <h1>Messages</h1>
                 <label>Message</label>
                 <input placeholder="Enter message here" onChange={this.setValue} value={this.state.newMessage} />
                 <button onClick={() => this.enterMessage()}>Post</button>
-                {this.props.message.map(message => message["message"])}
+                <div className="message">
+                {/* {this.props.message.map(message => {message["message"]})} */}
+                </div>
             </div>
         )
     }
 }
 const mapStateToProps = (state) => ({
-    userData: state.userData
+  messages: state.messages.userData
 })
 
 const mapDispatchToProps = dispatch => ({
-    getAllData: () => {
-        dispatch(getAllData())
+    showPosts: () => {
+        dispatch(showPosts())
     },
-    enterMessage: (message) => {
-        dispatch(enterMessage(message))
+    postAdded: (message) => {
+        dispatch(postAdded(message))
     }
 })
 
