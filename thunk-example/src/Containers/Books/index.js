@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addBook, removeBook, editContent } from '../../redux/actions/books actions';
-
+import "./books.css"
 
 
 class Books extends Component {
@@ -27,12 +27,16 @@ class Books extends Component {
     const { availableBooks } = this.props;
 
     for (var i in availableBooks) {
-      if (availableBooks[i].author === author.trim().toUpperCase()) {
+      if (availableBooks[i].author === author) {
         alert('Found existing Author')
         return
       }
     }
     this.props.addBook(name, author)
+    this.setState({
+      name: "",
+      author: ""
+    })
   }
 
   editContent(editAuthor, editId) {
@@ -52,32 +56,25 @@ class Books extends Component {
   render() {
     const { isToggle, name, author, editAuthor, editId } = this.state;
     const { availableBooks } = this.props;
-    return <div className="books"><h1>Books</h1>
-      <strong style={{ margin: '0.5' }}>Name here :</strong>
-      <input placeholder="Enter name here" type="text" style={{ margin: '0.8%' }}
-        onChange={e => this.setState({ name: e.target.value })} />
-      <strong style={{ margin: '0.5%' }}>Author here :</strong>
-      <input placeholder="Enter author here" style={{ margin: '0.8%' }}
-        type="text"
-        onChange={e => this.setState({ author: e.target.value })} />
-      <button onClick={() => this.addBook(name, author)} style={{ backgroundColor: 'orange', color: 'black', position: 'relative' }}>Add</button>
+    return <div className="books"><h1 className="header">Books</h1>
+      <h4>Name here :</h4>
+      <input placeholder="Enter name here" type="text" value={this.state.name} onChange={e => this.setState({ name: e.target.value })} />
+      <h4>Author here :</h4>
+      <input placeholder="Enter author here" type="text" value={this.state.author} onChange={e => this.setState({ author: e.target.value })} />
+      <button onClick={() => this.addBook(name, author)}>Add</button>
       {isToggle !== false ? <div>
-        <input type="text"
-          style={{ margin: '3%' }}
-          value={editAuthor}
-          onChange={e => this.setState({ editAuthor: e.target.value })} />
-        <button onClick={() => this.editContent(editAuthor, editId)} style={{ backgroundColor: 'orange', color: 'black' }}>Save</button>
+        <input type="text" value={editAuthor} onChange={e => this.setState({ editAuthor: e.target.value })} />
+        <button onClick={() => this.editContent(editAuthor, editId)}>Save</button>
       </div> : null}
-      {availableBooks.map(book => <div style={{ margin: '2rem', wordSpacing: '5px' }}
-        key={book.name}><strong>Name:</strong> {book.name} <strong>Author:</strong> {book.author} <h3>Date: {book.date}<ul></ul></h3>
-        <button onClick={() => this.props.removeBook(book.id)} style={{ backgroundColor: 'purple', color: 'white', margin: '2%', position: 'inherit' }}>Remove Book</button>
-        <button onClick={() => this.setEditState(book.author, book.id)} style={{ backgroundColor: 'orange', color: 'black' }}>Edit</button>
+      {availableBooks.map(book => <div className="data"
+        key={book.name}>Name:{book.name} Author: {book.author}
+        <h3>Date: {book.date}</h3>
         <div className='book-buttons'>
+          <button onClick={() => this.props.removeBook(book.id)}>Remove Book</button>
+          <button onClick={() => this.setEditState(book.author, book.id)} >Edit</button>
         </div>
       </div>)
       }
-
-
     </div>
   }
 

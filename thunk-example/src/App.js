@@ -1,28 +1,28 @@
 import React from 'react';
 import './App.css';
-import Toolbar from './Components/Toolbar/Toolbar'
-import Users from './Containers/Users'
-import Books from './Containers/Books'
+import {BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Users from './Containers/Users';
+import Books from './Containers/Books';
 import Computers from './Containers/Computers';
+import { Layout } from './Components/Layout';
+import {NavigationBar} from './Components/NavigationBar'
 
 
 class App extends React.Component {
 
   
-  render() {
-    
+  render() {  
     return (
-      <div style={{ height: '100%' }}>
-        <Toolbar drawerClickHandler={this.drawerToggleClickHandler} />
-       
-        <main style={{ marginTop: '4%' }}>
-        </main>
-        <div className="container">
-        <div className="users"><Users /></div>
-        <div className="books"><Books /></div>
-        <div className="computers"><Computers /></div>
-      </div >
-      </div >
+    <React.Fragment>
+      <NavigationBar/>
+      <Router>
+        <Switch>
+          <Route exact path="/" component={Users} />
+          <Route exact path="/books" component={Books} />
+          <Route exact path="/computers" component={Computers} />
+        </Switch>
+      </Router>
+    </React.Fragment>
     )
   }
 }

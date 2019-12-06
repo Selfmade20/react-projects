@@ -1,8 +1,7 @@
-import Users from "../../Containers/Users"
 
 const initialState = {
   all: [],
-  id: "1",
+  id: 1,
   date: new Date().toLocaleTimeString()
 }
 

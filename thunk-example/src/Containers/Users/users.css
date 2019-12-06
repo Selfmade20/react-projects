@@ -1,0 +1,18 @@
+.data {
+    text-align: center;
+    position: relative;
+    margin-top: auto;
+}
+
+.input{
+    margin-top: 2%;
+}
+
+.name{
+    margin:5px;
+    
+}
+
+.add_user {
+    margin: 3px;
+}
