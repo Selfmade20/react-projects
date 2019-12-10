@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { showPosts, postAdded } from '../redux/users/thunks';
-import { enterMessage } from '../redux/actions/user actions'
-
 
 class Messages extends Component {
     constructor(props) {
@@ -24,6 +22,7 @@ class Messages extends Component {
     enterMessage = () => {
     this.props.postAdded({
         message: this.state.newPost,
+        name: this.props.name
 
     })
     this.setState({newPost: ""})
@@ -38,7 +37,7 @@ class Messages extends Component {
                 <input placeholder="Enter message here" onChange={this.setValue} value={this.state.newMessage} />
                 <button onClick={() => this.enterMessage()}>Post</button>
                 <div className="message">
-                {/* {this.props.message.map(message => {message["message"]})} */}
+                
                 </div>
             </div>
         )
