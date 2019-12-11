@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { showPosts, postAdded } from '../redux/Messages/thunks';
+import { getPosts, addPost } from '../redux/Messages/thunks';
+import Post from './Post';
+import {Data} from '../styles'
 
 class Messages extends Component {
     constructor(props) {
@@ -11,29 +13,30 @@ class Messages extends Component {
     }
 
     componentDidMount() {
-        this.props.showPosts()
+        this.props.getPosts()
 
-    }
-
-    setValue = (event) => {
-        this.setState({ newPost: event.target.value })
     }
 
     render() {
-        const {posts} =this.props
-        return ( 
+        const { posts } = this.props
+        return (
             <div>
-                <h1>Messages</h1>
-                <label>Message</label>
-                <div className="message">
+                <h1 className="header">Messages</h1>
+                <Post />
+                <Data>
                     {posts.map(message => (
-                        <div className="messages" key={message["uuid"]}>
-                            {message["name"]}
-                            {message["message"]}
+                        <div key={message["uuid"]}>
+                            <ul>
+                                <div className="name">
+                                    <label>Name:</label> {message["name"]}
+                                </div>
+                                <div className="message">
+                                    <label>Message:</label> {message["message"]}
+                                </div>
+                            </ul>
                         </div>
                     ))}
-                </div>
-
+                </Data>
             </div >
         )
     }
@@ -44,12 +47,9 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    showPosts: () => {
-        dispatch(showPosts())
+    getPosts: () => {
+        dispatch(getPosts())
     },
-    postAdded: (message) => {
-        dispatch(postAdded(message))
-    }
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Messages)

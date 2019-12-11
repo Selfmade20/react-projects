@@ -12,7 +12,7 @@ const Styles = styled.div`
     color: #bbb;
 
     &:hover {
-        color: white;
+        color: orange;
     }
 }
 
