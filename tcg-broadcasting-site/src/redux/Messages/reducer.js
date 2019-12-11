@@ -2,11 +2,12 @@ const initialState = {
     listOfPosts: [],
 }
 
-export default function listOfPosts (state = initialState, action) {
+export default function messagesReducer (state = initialState, action) {
     switch(action.type) {
         case "GET_POSTS" : {
-            const newState = {...state, listOfPosts: [...action.payload]}
-            return newState
+            return {
+                ...state, listOfPosts: action.payload
+            }
         }
         default: 
         return state

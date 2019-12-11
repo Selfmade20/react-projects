@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { showPosts, postAdded } from '../redux/users/thunks';
+import { showPosts, postAdded } from '../redux/Messages/thunks';
 
 class Messages extends Component {
     constructor(props) {
@@ -12,39 +12,35 @@ class Messages extends Component {
 
     componentDidMount() {
         this.props.showPosts()
-       
+
     }
 
     setValue = (event) => {
         this.setState({ newPost: event.target.value })
     }
 
-    enterMessage = () => {
-    this.props.postAdded({
-        message: this.state.newPost,
-        name: this.props.name
-
-    })
-    this.setState({newPost: ""})
-    this.props.showPosts()
-    }
-
     render() {
-        return (
+        const {posts} =this.props
+        return ( 
             <div>
                 <h1>Messages</h1>
                 <label>Message</label>
-                <input placeholder="Enter message here" onChange={this.setValue} value={this.state.newMessage} />
-                <button onClick={() => this.enterMessage()}>Post</button>
                 <div className="message">
-                
+                    {posts.map(message => (
+                        <div className="messages" key={message["uuid"]}>
+                            {message["name"]}
+                            {message["message"]}
+                        </div>
+                    ))}
                 </div>
-            </div>
+
+            </div >
         )
     }
 }
+
 const mapStateToProps = (state) => ({
-  messages: state.messages.userData
+    posts: state.listOfPosts.listOfPosts
 })
 
 const mapDispatchToProps = dispatch => ({

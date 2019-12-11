@@ -1,7 +1,9 @@
 import { combineReducers } from 'redux';
 
-import users from './users/reducer';
+import userName from './Login/reducer';
+import listOfPosts from './Messages/reducer';
 
 export default combineReducers({
-    users
+    userName,
+    listOfPosts
 })
