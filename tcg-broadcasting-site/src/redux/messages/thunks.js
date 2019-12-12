@@ -3,12 +3,10 @@ import Axios from "axios";
 export const addPost = (message) => {
     return async dispatch => {
         try {
+            console.log("Ayeye")
             await Axios.post("http://ac88a44a6935711e982b602f197ebe6f-1529281652.eu-west-2.elb.amazonaws.com/chat/person/",
-                message.message)
-                dispatch({
-                    type: "POST_ADDED",
-                    payload: [Axios.defaults]
-                })
+            message )
+                
         }catch(error){
             console.log(error);
         }

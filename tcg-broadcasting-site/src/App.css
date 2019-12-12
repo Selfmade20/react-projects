@@ -1,5 +1,5 @@
 body, html {
-  background-image: url(phone.jpg);
+  background-image: url(view.jpg);
   background-size: cover;
  
 
@@ -7,7 +7,7 @@ body, html {
 .header{
   font-size: 500%;
   font-family: Georgia;
-  color: orange;
+  color: purple;
   font-weight: bold;
   text-align: center;
   margin-top: 50px;

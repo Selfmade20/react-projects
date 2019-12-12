@@ -1,10 +1,16 @@
 import React from 'react';
+import styled from 'styled-components'
 
+
+const Styles = styled.div`
+    color: white
+    font-family: cambria
+`
 export const NoMatch = () => {
     return (
-        <div>
+        <Styles>
             <h2>No Match</h2>
-        </div>
+        </Styles>
     )
 }
 

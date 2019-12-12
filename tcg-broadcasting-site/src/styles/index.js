@@ -2,11 +2,10 @@ import styled from 'styled-components'
 
 
 export const Wrapper = styled.div`
-    color: orange;
+    color: black;
     font-size: 25px;
     font-family: cambria;
     margin:1rem;
-}
 `
 
 
@@ -22,6 +21,12 @@ export const Input = styled.textarea`
     wrap: off
 `
 export const Data = styled.div `
-color: orange;
+color: black;
 font-size: 17px;
+margin: 2%
+`
+export const Description = styled.div `
+color: black
+font-family: Verdana
+font-size: 20px
 `
