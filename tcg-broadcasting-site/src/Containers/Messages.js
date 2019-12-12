@@ -2,21 +2,30 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getPosts, addPost } from '../redux/Messages/thunks';
 import Post from './Post';
-import {Data} from '../styles'
+import { Data } from '../styles'
 
 class Messages extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            newPost: ""
+            newMessage: ""
         }
     }
 
     componentDidMount() {
-        this.props.getPosts()
+        this.timer = setInterval(() =>
+            this.props.getPosts(), 5000
+        )
 
     }
 
+    setValue = (event) => {
+        this.setState({
+            newMessage: event.target.value
+        })
+    }
+
+   
     render() {
         const { posts } = this.props
         return (

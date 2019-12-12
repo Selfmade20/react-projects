@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { enterName } from '../redux/Login/actions';
-
+import { NavLink } from 'react-router-dom';
 
 
 
@@ -13,15 +13,14 @@ class Login extends Component {
         }
     }
 
-
     setValue = (event) => {
         this.setState({ newUser: event.target.value })
     }
 
-    logIn = (name) => {
-        this.props.enterName(name)
+    logIn = () => {
+        this.props.enterName(this.state.newUser)
         this.setState({
-            name: ""
+            newUser: ""
         })
     }
 
@@ -32,23 +31,23 @@ class Login extends Component {
                 <h1 className="header">WELCOME TO</h1>
                 <h1 className="header">THE CODING GROUND</h1>
                 <p className="description" style={{ color: "white", margin: "7px" }}>Please enter your name to proceed</p>
-                <form className="survey-form">
+                <div className="survey-form">
                     <div className="form-group" style={{ margin: "7px" }}>
                         <label className="label" style={{ color: "white" }} for="name">Name</label>
                         <input
                             style={{ width: "40%" }}
                             type="text"
                             name="text_name"
-                            value={this.name}
+                            value={this.state.newUser}
                             className="form-control"
                             placeholder="Enter your name"
                             onChange={this.setValue}
-                            required
                         />
-                        <button
-                            type="submit" onClick={() => this.logIn()} className="submit-button">Submit</button>
+                        <NavLink to={`Posts`}>
+                            <button type="submit" onClick={() => this.logIn()} className="submit-button">Submit</button>
+                        </NavLink>
                     </div>
-                </form>
+                </div>
             </div>
         );
     }
@@ -61,7 +60,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = dispatch => ({
     enterName: (name) => {
         dispatch(enterName(name))
-    }
+    } 
 })
 
-export default connect(mapDispatchToProps, mapStateToProps)(Login);
+export default connect(mapStateToProps , mapDispatchToProps)(Login);

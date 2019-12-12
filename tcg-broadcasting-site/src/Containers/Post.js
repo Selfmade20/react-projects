@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { addPost } from '../redux/Messages/thunks'
 import { connect } from 'react-redux'
-import {Wrapper , Button, Input} from "../styles"
+import { Wrapper, Button, Input } from "../styles"
+import Messages from './Messages'
 
 class Post extends Component {
     constructor(props) {
@@ -26,13 +27,14 @@ class Post extends Component {
     }
 
     render() {
-     
+
         return (
-                <Wrapper>
-                    <div className="label">Message</div>
-                    <Input onChange={this.setValue} value={this.state.newMessage}></Input>
-                    <Button onClick={this.addMessage}>Post</Button>
-                </Wrapper>
+            <Wrapper>
+                <div className="label">Message:</div>
+                <Input placeholder="Type your message here" onChange={this.setValue} value={this.state.newMessage}></Input>
+                <Button onClick={this.addMessage}>Post</Button>
+                <Messages />
+            </Wrapper>
         );
     }
 }
