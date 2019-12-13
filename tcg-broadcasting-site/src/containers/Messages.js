@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getPosts, addPost } from '../redux/Messages/thunks';
+import { getPosts, addPost } from '../redux/messages/thunks';
 import { Data, Wrapper, Input, Button } from '../styles'
 import { NavLink } from 'react-router-dom';
 

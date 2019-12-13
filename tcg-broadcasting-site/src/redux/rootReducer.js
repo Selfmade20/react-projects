@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 
-import userName from './Login/reducer';
-import listOfPosts from './Messages/reducer';
+import userName from './login/reducer';
+import listOfPosts from './messages/reducer';
 
 export default combineReducers({
     userName,

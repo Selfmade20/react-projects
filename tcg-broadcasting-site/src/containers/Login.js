@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { enterName } from '../redux/Login/actions';
+import { enterName } from '../redux/login/actions';
 import { NavLink } from 'react-router-dom';
 import { Description, Button } from '../styles'
-
 
 class Login extends Component {
     constructor(props) {
@@ -23,7 +22,6 @@ class Login extends Component {
             newUser: ""
         })
     }
-
 
     render() {
         return (
