@@ -26,7 +26,8 @@ font-size: 17px;
 margin: 2%
 `
 export const Description = styled.div `
-color: black
-font-family: Verdana
-font-size: 20px
+color: black;
+font-family: Verdana;
+font-size: 20px;
+margin: 1%
 `

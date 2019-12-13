@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Messages from '../Containers/Messages'
+import Messages from '../containers/Messages'
 class Posts extends Component {
     render() {
         return (

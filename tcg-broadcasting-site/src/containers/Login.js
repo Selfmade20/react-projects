@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { enterName } from '../redux/Login/actions';
+import { enterName } from '../redux/login/actions';
 import { NavLink } from 'react-router-dom';
 import { Description, Button } from '../styles'
+import { getPosts } from '../redux/messages/thunks'
 
 
 class Login extends Component {
@@ -35,8 +36,10 @@ class Login extends Component {
                     <label className="label" for="name">Name</label>
                 </Description>
                 <input
-                    style={{ width: "40%" }}
+                    style={{ width: "25%", margin: "1%" }}
                     type="text"
+                    minLength="1"
+                    required
                     name="text_name"
                     value={this.state.newUser}
                     className="form-control"
@@ -58,6 +61,9 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = dispatch => ({
     enterName: (name) => {
         dispatch(enterName(name))
+    },
+    getPosts: () => {
+        dispatch(getPosts())
     }
 })
 
