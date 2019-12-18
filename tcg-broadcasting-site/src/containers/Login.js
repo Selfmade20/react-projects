@@ -31,10 +31,10 @@ class Login extends Component {
             <div className="wrapper">
                 <h1 className="header">WELCOME TO</h1>
                 <h1 className="header">THE CODING GROUND</h1>
-                <Description>
+                 <Description>
                     <p className="description">Please enter your name to proceed</p>
                     <label className="label" for="name">Name</label>
-                </Description>
+                </Description> 
                 <input
                     style={{ width: "25%", margin: "1%" }}
                     type="text"

@@ -1,4 +1,4 @@
-import Axios from "axios";
+
 const url = "ws://ac88a44a6935711e982b602f197ebe6f-1529281652.eu-west-2.elb.amazonaws.com/chat/"
 var socket = new WebSocket(url);
 var listOfMessage = [];
@@ -15,6 +15,7 @@ export const getPosts = () => dispatch => {
     socket.onmessage = function (event) {
         const messages = JSON.parse(event.data);
         listOfMessage = messages;
+        console.log("messages", messages)
     }
     dispatch({
         type: "GET_POSTS",

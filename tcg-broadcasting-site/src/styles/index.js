@@ -10,8 +10,7 @@ export const Wrapper = styled.div`
 
 
 export const Button = styled.button`
-    margin:0.5rem;
-    width:5rem;
+    margin:1rem;
     border-radius: 10px;
 `;
 
@@ -20,12 +19,12 @@ export const Input = styled.textarea`
     overflow: auto;
     wrap: off
 `
-export const Data = styled.div `
+export const Data = styled.div`
 color: black;
 font-size: 17px;
 margin: 2%
 `
-export const Description = styled.div `
+export const Description = styled.div`
 color: black;
 font-family: Verdana;
 font-size: 20px;

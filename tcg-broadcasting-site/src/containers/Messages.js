@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getPosts, addPost } from '../redux/messages/thunks';
 import { Data, Wrapper, Input, Button } from '../styles'
-import { NavLink } from 'react-router-dom';
-import { runInThisContext } from 'vm';
 
 class Messages extends Component {
     constructor(props) {
@@ -16,9 +14,7 @@ class Messages extends Component {
     componentWillMount() {
         this.props.getPosts()
     }
-    componentDidMount() {
-        this.props.getPosts()
-    }
+
 
 
     setValue = (event) => {
@@ -41,7 +37,7 @@ class Messages extends Component {
         const { posts } = this.props
         return (
             <div>
-                <h2>{this.props.name}</h2>
+                <h2 className="User-icon"><span class="glyphicon glyphicon-user"></span> {this.props.name}</h2>
                 <h1 className="header">Messages</h1>
                 <a href="http://localhost:3000">
                     <Button>Back</Button>
