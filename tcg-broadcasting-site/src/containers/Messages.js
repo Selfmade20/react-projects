@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getPosts, addPost } from '../redux/messages/thunks';
 import { Data, Wrapper, Input, Button } from '../styles'
-import { NavLink } from 'react-router-dom';
 
 class Messages extends Component {
     constructor(props) {
@@ -40,9 +39,8 @@ class Messages extends Component {
         return (
             <div>
                 <h1 className="header">Messages</h1>
-                <NavLink to={`Home`}>
-                    <Button>Back</Button>
-                </NavLink>
+                <span class="glyphicon glyphicon-user"></span> <h3>{this.props.name}</h3>
+                <a href="http://localhost:3000/"><Button>Back</Button></a>            
                 <Wrapper>
                     <div className="label">Message:</div>
                     <Input placeholder="Type your message here" onChange={this.setValue} value={this.state.newMessage}></Input>

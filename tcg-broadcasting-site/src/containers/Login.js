@@ -33,7 +33,7 @@ class Login extends Component {
                     <label className="label" for="name">Name</label>
                 </Description>
                 <input
-                    style={{ width: "40%" }}
+                    style={{ width: "40%", marginLeft: "6px" }}
                     type="text"
                     name="text_name"
                     value={this.state.newUser}

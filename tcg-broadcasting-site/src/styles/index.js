@@ -6,6 +6,7 @@ export const Wrapper = styled.div`
     font-size: 25px;
     font-family: cambria;
     margin:1rem;
+    display: flex;
 `
 
 
@@ -28,5 +29,6 @@ margin: 2%
 export const Description = styled.div `
 color: black
 font-family: Verdana
+margin-left: 6px
 font-size: 20px
 `

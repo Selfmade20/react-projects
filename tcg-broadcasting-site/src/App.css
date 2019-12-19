@@ -7,8 +7,12 @@ body, html {
 .header{
   font-size: 500%;
   font-family: Georgia;
-  color: purple;
+  color:gray;
   font-weight: bold;
   text-align: center;
   margin-top: 50px;
+}
+
+.flex-container {
+  display: flex;
 }

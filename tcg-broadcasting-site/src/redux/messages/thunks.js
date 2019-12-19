@@ -3,7 +3,7 @@ import Axios from "axios";
 export const addPost = (message) => {
     return async dispatch => {
         try {
-            console.log("Ayeye")
+            console.log("Ayeye", message)
             await Axios.post("http://ac88a44a6935711e982b602f197ebe6f-1529281652.eu-west-2.elb.amazonaws.com/chat/person/",
             message )
                 
