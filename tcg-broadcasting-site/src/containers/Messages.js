@@ -40,25 +40,23 @@ class Messages extends Component {
             <div>
                 <h1 className="header">Messages</h1>
                 <span class="glyphicon glyphicon-user"></span> <h3>{this.props.name}</h3>
-                <a href="http://localhost:3000/"><Button>Back</Button></a>            
+                <a href="http://localhost:3000/"><Button>Back</Button></a>
+                <div className="label">Message:</div>
                 <Wrapper>
-                    <div className="label">Message:</div>
                     <Input placeholder="Type your message here" onChange={this.setValue} value={this.state.newMessage}></Input>
                     <Button onClick={this.addMessage}>Post</Button>
                 </Wrapper>
                 <Data>
                     {posts.map(message => (
                         <div key={message["uuid"]}>
-                            <li>
-                                <ul>
-                                    <div className="name">
-                                        <label>Name:</label> {message["name"]}
-                                    </div>
-                                    <div className="message">
-                                        <label>Message:</label> {message["message"]}
-                                    </div>
-                                </ul>
-                            </li>
+                            <ul>
+                                <div className="name">
+                                    <label>Name:</label> {message["name"]}
+                                </div>
+                                <div className="message">
+                                    <label>Message:</label> {message["message"]}
+                                </div>
+                            </ul>
                         </div>
                     ))}
                 </Data>
