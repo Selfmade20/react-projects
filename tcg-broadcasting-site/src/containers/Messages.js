@@ -39,7 +39,7 @@ class Messages extends Component {
         return (
             <div>
                 <h1 className="header">Messages</h1>
-                <span class="glyphicon glyphicon-user"></span> <h3>{this.props.name}</h3>
+                <i class="fas fa-user"></i><h3>{this.props.name}</h3>
                 <a href="http://localhost:3000/"><Button>Back</Button></a>
                 <div className="label">Message:</div>
                 <Wrapper>
