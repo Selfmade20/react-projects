@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Board from '../components/Board';
+import Buttons from '../components/Buttons';
 
 class Game extends Component {
     constructor(props) {
@@ -41,7 +43,13 @@ countUp = () => {
     render() {
         return (
             <div>
-
+                <Buttons
+                isStarted={this.state.isStarted}
+                isStrict={this.state.isStrict}
+                count={this.state.count}
+                onStrictToggle={this.handleStrictToggle}
+                onStart={this.handleStart}
+                />
             </div>
         );
     }

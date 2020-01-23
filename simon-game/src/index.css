@@ -1,13 +1,116 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.font-primary {
+  font-family: 'Inconsolata', monospace;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.header {
+  border-bottom: 2px solid black;
+}
+
+h1 {
+  font-size: 4em;
+}
+
+.button-panel {
+  margin-top: 10px;
+  font-size: 1.5em;
+}
+
+.button-panel-item {
+  margin: 5px;
+}
+
+.board-item {
+  height: 200px;
+  width: 200px;
+  margin: 10px;
+  background-color: black;
+  display: inline-block;
+  pointer-events : auto;
+  cursor:pointer;
+}
+
+.board-item.disabled {
+  pointer-events : none;
+}
+
+#board-item-0 {
+  /*green*/
+  background-color: #00a74a;
+  border-radius: 200px 0 0 0;
+  -moz-border-radius: 200px 0 0 0;
+  -webkit-border-radius: 200px 0 0 0;
+}
+
+#board-item-0:active, #board-item-0.active {
+  /*green light*/
+  background-color: #13ff7c;
+}
+
+#board-item-1 {
+  /*red*/
+  background-color: #9f0f17;
+  border-radius: 0 200px 0 0 ;
+  -moz-border-radius: 0 200px 0 0 ;
+  -webkit-border-radius: 0 200px 0 0 ;
+}
+
+#board-item-1:active, #board-item-1.active {
+  /*red light*/
+  background-color: #ff4c4c;
+}
+
+#board-item-2 {
+  /*yellow*/
+  background-color: #cca707;
+  border-radius: 0 0 0 200px;
+  -moz-border-radius: 0 0 0 200px;
+  -webkit-border-radius: 0 0 0 200px;
+}
+
+#board-item-2:active, #board-item-2.active {
+  /*yellow light*/
+  background-color: #fed93f;
+}
+
+#board-item-3 {
+  /*blue*/
+  background-color: #094a8f;
+  border-radius: 0 0 200px 0;
+  -moz-border-radius: 0 0 200px 0;
+  -webkit-border-radius: 0 0 200px 0;
+}
+
+#board-item-3:active, #board-item-3.active {
+  /*blue light*/
+  background-color: #1c8cff;
+}
+
+.board {
+  width: 440px;
+  height: 440px;
+  border-radius: 200px;
+}
+
+.flex-container {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  padding-top: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@keyframes blink {
+   50% { background-color: #ff0000; }
+}
+.board.blink {
+    animation-name: blink;
+    animation-duration: .5s;
+    animation-timing-function: step-end;
+    animation-iteration-count: 2;
+    animation-direction: alternate;
 }
