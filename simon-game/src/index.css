@@ -1,5 +1,7 @@
 body{
   background-color:gray;
+  background-image: url(grafitti.jpg);
+  background-size: cover;
 }
 .font-primary {
   font-family: 'Inconsolata', monospace;
@@ -7,6 +9,9 @@ body{
 
 .header {
   border-bottom: 2px solid black;
+  font-family: Verdana;
+  margin-bottom: 2%;
+  font-size: 40px;
 }
 
 h1 {

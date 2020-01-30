@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Board from '../components/Board';
 import Buttons from '../components/Buttons';
 
 class Game extends Component {
@@ -54,11 +53,6 @@ class Game extends Component {
                     onStart={this.handleStart}
                 />
 
-                <Board
-                    onMouseDown={this.handleMouseDown}
-                    activeItems={this.state.activeItems}
-                    isEnabled={this.state.isEnabled}
-                    isBlinking={this.state.isBlinking} />
             </div>
         );
     }

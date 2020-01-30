@@ -1,10 +1,10 @@
 import React from 'react';
-import ReactBootstrap from 'react-bootstrap';
 import { Button } from 'react-bootstrap'
 import PropTypes from 'prop-types';
 import Tooltip from 'react-bootstrap/Tooltip';
-import Board from './Board';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import {useState} from 'react';
+import {Switch} from 'react-switch';
 
 
 function Buttons(props) {
