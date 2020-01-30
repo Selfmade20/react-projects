@@ -23,7 +23,7 @@ function Board(props) {
                 itemId={itemId}
                 isActive={props.activeItems[item]}
                 isEnabled={props.isEnabled}
-                onMouseDown={props.onMouseDown.bind(null, item)} />
+                />
         )
     });
 
@@ -38,11 +38,6 @@ function Board(props) {
     )
 }
 
-Board.PropTypes = {
-    onMouseDown: PropTypes.func.isRequired,
-    activeItems: PropTypes.array.isRequired,
-    isEnabled: PropTypes.bool.isRequired,
-    isBlinking: PropTypes.bool.isRequired
-}
 
-export default Board;
+
+export default  Board;

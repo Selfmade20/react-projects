@@ -2,8 +2,10 @@ import React from 'react';
 import ReactBootstrap from 'react-bootstrap';
 import { Button } from 'react-bootstrap'
 import PropTypes from 'prop-types';
-import  Tooltip  from 'react-bootstrap/Tooltip';
-import  OverlayTrigger  from 'react-bootstrap/OverlayTrigger';
+import Tooltip from 'react-bootstrap/Tooltip';
+import Board from './Board';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+
 
 function Buttons(props) {
 
@@ -13,13 +15,24 @@ function Buttons(props) {
 
     return (
         <div className="text-center button-panel">
+        <div className="header">SIMON GAME</div>
+            <div className="board-buttons">
+                <button style=
+                {{backgroundColor: "yellow", width: 250, height: 150}}/>
+                <button style=
+                {{backgroundColor: "blue", width: 250, height: 150}}/> 
+            </div>
+            <div className="board-buttons">
+                <button style={{backgroundColor: "red", width: 250 , height: 150}}/>
+                <button style={{backgroundColor: "green", width: 250, height: 150}}/>
+            </div>
             <Button
                 bsStyle="primary"
+
                 className="button-panel-item"
                 onClick={props.onStart}>
                 {props.isStarted ? 'STOP' : 'START'}
             </Button>
-            {/* <Label className="button-panel-item">Count: {props.count}</Label> */}
             <OverlayTrigger placement="bottom" overlay={tooltip}>
                 <Button
                     bsStyle={props.isStrict ? "success" : "danger"}
@@ -33,12 +46,12 @@ function Buttons(props) {
     )
 }
 
-Buttons.propTypes = {
-    isStarted: PropTypes.bool.isRequired,
-    isStrict: PropTypes.bool.isRequired,
-    count: PropTypes.number.isRequired,
-    onStrictToggle: PropTypes.func.isRequired,
-    onStart: PropTypes.func.isRequired
-}
+// Buttons.propTypes = {
+//     isStarted: PropTypes.bool.isRequired,
+//     isStrict: PropTypes.bool.isRequired,
+//     count: PropTypes.number.isRequired,
+//     onStrictToggle: PropTypes.func.isRequired,
+//     onStart: PropTypes.func.isRequired
+// }
 
- export default Buttons;
+export default Buttons;

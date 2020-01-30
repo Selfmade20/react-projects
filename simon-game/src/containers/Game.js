@@ -15,41 +15,50 @@ class Game extends Component {
         }
     }
 
-handleStrictToggle = () => {
-    this.setState({
-        isStrict: !this.state.isStrict
-    })
-}
-
-handleStart = () => {
-    if(this.state.isStarted) {
-        this.stop()
-    }else {
+    handleStrictToggle = () => {
         this.setState({
-            isStarted: true
-        }, this.countUp)
+            isStrict: !this.state.isStrict
+        })
     }
-}
 
-countUp = () => {
-    if(this.state.isStarted){
-        this.setState({
-            count: this.state.count + 1
-        }, this.start)
+    handleStart = () => {
+        if (this.state.isStarted) {
+            this.stop()
+        } else {
+            this.setState({
+                isStarted: true
+            }, this.countUp)
+        }
     }
-}
+
+    countUp = () => {
+        if (this.state.isStarted) {
+            this.setState({
+                count: this.state.count + 1
+            }, this.start)
+        }
+    }
+    stop =() => {
+        console.log("yebow")
+    } 
 
 
     render() {
         return (
             <div>
                 <Buttons
-                isStarted={this.state.isStarted}
-                isStrict={this.state.isStrict}
-                count={this.state.count}
-                onStrictToggle={this.handleStrictToggle}
-                onStart={this.handleStart}
+                    isStarted={this.state.isStarted}
+                    isStrict={this.state.isStrict}
+                    count={this.state.count}
+                    onStrictToggle={this.handleStrictToggle}
+                    onStart={this.handleStart}
                 />
+
+                <Board
+                    onMouseDown={this.handleMouseDown}
+                    activeItems={this.state.activeItems}
+                    isEnabled={this.state.isEnabled}
+                    isBlinking={this.state.isBlinking} />
             </div>
         );
     }
