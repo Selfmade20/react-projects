@@ -1,0 +1,31 @@
+.container {
+    display: flex; /* or inline-flex */
+    flex-direction: row;
+    flex-wrap: wrap-reverse;
+    justify-content: space-around;
+  }
+
+.users{
+  text-align: left;
+}
+
+.books{
+  word-spacing: 2px;
+}
+
+.computers{
+  text-align: left;;
+}
+.remove-user-button{
+  position: relative;
+  padding: 2%;
+}
+
+.github{
+  margin: 2px;
+  padding: 1%;
+}
+
+.book-buttons{
+font-size: 20px;
+}
