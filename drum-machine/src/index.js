@@ -14,12 +14,6 @@ class App extends React.Component {
 
   handleDisplay = display => this.setState({ display });
 
-  onMouseEnter = () => {
-    document.body.style.cursor = "pointer";
-  }
-  onMouseLeave = () => {
-    document.body.style.cursor = "default";
-  }
 
 
   render() {
