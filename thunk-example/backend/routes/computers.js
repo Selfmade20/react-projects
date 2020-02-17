@@ -7,7 +7,7 @@ router.route('/').get((req, res) => {
         .then(computers => res.json(computers))
         .catch(err => res.status(400).json("Error: " + err));
 });
-
+ 
 // Handles incoming http .post request
 router.route('/add').post((req, res) => {
     const name = req.body.name;
@@ -22,6 +22,31 @@ router.route('/add').post((req, res) => {
     newComputer.save()
         .then(() => res.json('Computer added!'))
         .catch(err => res.status(400).json('Error: ' + err));
+});
+
+router.route('/:id').get((req,res) => {
+    Computers.findById(req.params.id)
+    .then(computers => res.json(computers))
+    .catch(err => res.status(400).json('Error: ' + err));
+});
+
+router.route('/:id').delete((req, res) => {
+    Computers.findByIdAndDelete(req.params.id)
+    .then(() => res.json('Computer deleted.'))
+    .catch(err => res.status(400).json('Error: ' + err));
+});
+
+router.route('/update/:id').post((req, res) => {
+    Computers.findById(req.params.id)
+    .then(computers => {
+        computers.name = req.body.name;
+        computers.date = Date.parse(req.body.date);
+
+        computers.save()
+        .then(() => res.json('Computer updated!'))
+        .catch(err => res.status(400).json('Error: ' + err));
+    })
+    .catch(err => res.status(400).json('Error: ' + err));
 });
 
 module.exports = router;  

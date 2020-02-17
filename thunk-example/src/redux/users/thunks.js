@@ -1,6 +1,6 @@
 export const getAllUsers = () => {
   return async dispatch => {
-    const usersResult = await fetch('https://reqres.in/api/users')
+    const usersResult = await fetch('https://localhost:3000/users/add')
     const users = await usersResult.json()
     console.log("Hello", users)
 

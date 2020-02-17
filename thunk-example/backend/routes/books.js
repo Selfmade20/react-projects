@@ -26,4 +26,32 @@ router.route('/add').post((req, res) => {
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
+
+router.route('/:id').get((req,res) => {
+    Books.findById(req.params.id)
+    .then(books => res.json(books))
+    .catch(err => res.status(400).json('Error: ' + err));
+});
+
+router.route('/:id').delete((req, res) => {
+    Books.findByIdAndDelete(req.params.id)
+    .then(() => res.json('Book deleted!'))
+    .catch(err => res.status(400).json('Error: ' + err));
+});
+
+router.route('/update/:id').post((req, res) => {
+    Books.findById(req.params.id)
+    .then(books => {
+        books.bookName = req.body.bookName;
+        books.bookAuthor = req.body.bookAuthor;
+        books.date = Date.parse(req.body.date);
+
+        books.save()
+        .then(() => res.json('Book updated!'))
+        .catch(err => res.status(400).json('Error: ' + err));
+    })
+    .catch(err => res.status(400).json('Error: ' + err));
+});
+
+
 module.exports = router;  

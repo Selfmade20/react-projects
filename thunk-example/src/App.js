@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.css';
 import {BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Users from './Containers/Users';
-import Books from './Containers/Books';
-import Computers from './Containers/Computers';
-import { Layout } from './Components/Layout';
-import {NavigationBar} from './Components/NavigationBar'
+import Users from './containers/Users';
+import Books from './containers/Books';
+import Computers from './containers/Computers';
+import { Layout } from './components/Layout';
+import {NavigationBar} from './components/NavigationBar'
 
 
 class App extends React.Component {

@@ -52,7 +52,7 @@ class Books extends Component {
   setValue = (e) => {
     this.setState({ newBook: e.target.value })
   }
-
+ 
 
   render() {
     const { isToggle, name, author, editAuthor, editId } = this.state;
@@ -67,6 +67,10 @@ class Books extends Component {
         <button onClick={() => this.addBook(name, author)}>Add</button>
       </div>
       {isToggle !== false ? <div>
+        <label>
+         Name  
+        <input type="text" value={editContent} onChange={e => this.setState({editContent: e.target.vaule})} />
+        </label>
         <input type="text" value={editAuthor} onChange={e => this.setState({ editAuthor: e.target.value })} />
         <button onClick={() => this.editContent(editAuthor, editId)}>Save</button>
       </div> : null}
