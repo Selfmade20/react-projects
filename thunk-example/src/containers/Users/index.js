@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { getAllUsers } from '../../redux/users/thunks'
-import { addUser, removeUser } from '../../redux/actions/users actions'
+import { addUser,getAllUsers, removeUser } from '../../redux/actions/users'
 import './users.css'
 
 class Users extends Component {
@@ -44,7 +43,7 @@ class Users extends Component {
         <h1 className="header">Users</h1>
         <label><strong>Names</strong></label>
         {users.map(u => <div className="user-names"><li> {u["first_name"]}</li>
-        <button onClick={() => this.props.removeUser(u.id)}>Remove User</button>
+        <button onClick={() => this.props.removeUser(u._id)}>Remove User</button>
         </div>)}
       </div>
     </div>

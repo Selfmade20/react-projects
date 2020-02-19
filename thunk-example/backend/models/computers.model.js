@@ -4,7 +4,8 @@ const Schema = mongoose.Schema;
 
 const computerSchema = new Schema({
     name: { type: String, required: true },
-    date: { type: Date, required: true },
+    date : { type : Date, default: Date.now }
+
 }, {
     timestamps: true,
 });

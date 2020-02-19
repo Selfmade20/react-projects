@@ -1,4 +1,3 @@
-
 const initialState = {
   all: [],
   id: 1,

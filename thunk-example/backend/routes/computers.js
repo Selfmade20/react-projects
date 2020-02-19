@@ -4,24 +4,24 @@ let Computers = require('../models/computers.model');
 // Handles incoming http .get request
 router.route('/').get((req, res) => {
     Computers.find()
-        .then(computers => res.json(computers))
+        .then(computers => res.send(computers))
         .catch(err => res.status(400).json("Error: " + err));
 });
  
 // Handles incoming http .post request
 router.route('/add').post((req, res) => {
     const name = req.body.name;
-    const date = Date.parse(req.body.date);
+    console.log("home home body" , req.body);
 
     const newComputer = new Computers({
         name,
-        date,
     });
-
     // Saved to database
     newComputer.save()
-        .then(() => res.json('Computer added!'))
-        .catch(err => res.status(400).json('Error: ' + err));
+        .then((computer ) => res.send(computer))
+        .catch(err => {
+            console.log(err)
+            res.status(400).json('Error: ' + err)});
 });
 
 router.route('/:id').get((req,res) => {
@@ -50,3 +50,4 @@ router.route('/update/:id').post((req, res) => {
 });
 
 module.exports = router;  
+

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { addComputer, removeComputer } from '../../redux/actions/computer actions';
+import { addComputer, getAllComputers, removeComputer } from '../../redux/actions/computer';
+import axios from 'axios';
 
 
 class Computer extends Component {
@@ -16,6 +17,11 @@ class Computer extends Component {
     this.setState({ newComputer: e.target.value })
   }
 
+
+  componentDidMount(){
+    this.props.getAllComputers()
+  }
+
   addComputer(computer) {
     const { computers } = this.props;
 
@@ -25,8 +31,11 @@ class Computer extends Component {
         return
       }
     }
-    this.props.addComputer(computer)
+
+    const name =  this.state.newComputer;
+    this.props.addComputer(name)
     this.setState({ newComputer: '' })
+
   }
 
   render() {
@@ -38,10 +47,10 @@ class Computer extends Component {
       <input placeholder="Enter computer here" type="text" onChange={this.setValue} value={this.state.newComputer} />
       <button onClick={() => this.addComputer(this.state.newComputer)}>Add Computer</button>
       {computers.map(c =>
-        <div className="data">  
+        <div className="data">
           <h5>Name: {c.name}</h5>
           <h5>Date: {c.date}</h5>
-          <button onClick={() => this.props.removeComputer(c.id)}> Remove Computer</button>
+          <button onClick={() => this.props.removeComputer(c._id)}> Remove Computer</button>
           <div>
           </div>
         </div>)}
@@ -60,6 +69,9 @@ const mapDispatchToProps = dispatch => ({
   },
   removeComputer: (computers) => {
     dispatch(removeComputer(computers))
+  },
+  getAllComputers: () => {
+    dispatch(getAllComputers())
   }
 })
 
