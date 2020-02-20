@@ -19,7 +19,6 @@ export function  getAllComputers() {
     return async dispatch => {
         try{
             const {data} =  await axios.get('http://localhost:5000/computers');
-            console.log("all computes" , data);
             dispatch({type : "GET_ALL_COMPUTERS" , payload : data})
         }catch(e){
             console.log(e);

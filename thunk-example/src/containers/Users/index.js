@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { addUser,getAllUsers, removeUser } from '../../redux/actions/users'
+import { addUser, getAllUsers, removeUser } from '../../redux/actions/users'
 import './users.css'
 
 class Users extends Component {
@@ -28,12 +28,14 @@ class Users extends Component {
         return
       }
     }
-    this.props.addUser({ first_name: this.state.newUser })
+    const username = this.state.newUser
+    this.props.addUser(username)
     this.setState({ newUser: '' })
   }
 
   render() {
     const { users } = this.props
+    console.log('users ' , users)
     return <div className="items">
 
       <h7 className="name">Name:</h7>
@@ -42,8 +44,8 @@ class Users extends Component {
       <div className="data">
         <h1 className="header">Users</h1>
         <label><strong>Names</strong></label>
-        {users.map(u => <div className="user-names"><li> {u["first_name"]}</li>
-        <button onClick={() => this.props.removeUser(u._id)}>Remove User</button>
+        {users.map(u => <div className="user-names"><li> {u.username}</li>
+          <button onClick={() => this.props.removeUser(u._id)}>Remove User</button>
         </div>)}
       </div>
     </div>
@@ -51,19 +53,19 @@ class Users extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  users: state.users.all,
+  users: state.users.users,
 })
 
 const mapDispatchToProps = dispatch => ({
-  getAllUsers: () => {
-    dispatch(getAllUsers())
-  },
   addUser: (user) => {
     dispatch(addUser(user))
   },
   removeUser: (user) => {
     dispatch(removeUser(user))
-  }
+  },
+  getAllUsers: () => {
+    dispatch(getAllUsers())
+  },
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Users)

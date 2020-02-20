@@ -1,24 +1,17 @@
 const initialState = {
-  all: [],
-  id: 1,
-  date: new Date().toLocaleTimeString()
+  users: []
 }
 
 export default function counter(state = initialState, action) {
-  console.log(action)
   switch (action.type) {
-    case "ADD_USERS": {
-      if (state.initialState === 0) {
-        return { ...state, all: action.payload, id: 1, date: new Date().toLocaleTimeString() }
-      }
-      return { ...state, all: action.payload }
+    case "GET_ALL_USERS": {
+      return { ...state, users: [...action.payload] }
     }
     case "ADD_USER": {
-      const newState = { ...state, all: [...state.all, action.payload], id: 1, date: new Date().toLocaleTimeString() }
-      return newState;
+      return { ...state, users: [...state.users, action.payload] }
     }
     case "REMOVE_USER": {
-      return { all: [...state.all.filter(user => user.id !== action.payload.id)] }
+      return { users: [...state.users.filter(user => user._id !== action.payload.id)] }
     }
     default:
       return state

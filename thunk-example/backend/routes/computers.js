@@ -18,7 +18,7 @@ router.route('/add').post((req, res) => {
     });
     // Saved to database
     newComputer.save()
-        .then((computer ) => res.send(computer))
+        .then((computer ) => res.send(computer)).sort()
         .catch(err => {
             console.log(err)
             res.status(400).json('Error: ' + err)});

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { addComputer, getAllComputers, removeComputer } from '../../redux/actions/computer';
-import axios from 'axios';
 
 
 class Computer extends Component {
@@ -26,7 +25,7 @@ class Computer extends Component {
     const { computers } = this.props;
 
     for (var i in computers) {
-      if (computers[i].name == computer.trim()) {
+      if (computers[i].name === computer.sort()) {
         alert("Computer already exists")
         return
       }

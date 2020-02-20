@@ -4,7 +4,6 @@ import {BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Users from './containers/Users';
 import Books from './containers/Books';
 import Computers from './containers/Computers';
-import { Layout } from './components/Layout';
 import {NavigationBar} from './components/NavigationBar'
 
 

@@ -10,19 +10,18 @@ router.route('/').get((req, res) => {
 
 // Handles incoming http .post request
 router.route('/add').post((req, res) => {
-    const bookName = req.body.bookName;
-    const bookAuthor = req.body.bookAuthor
-    const date = Date.parse(req.body.date);
+    console.log('dfhsdf', req.body)
+    const bookName = req.body.book.name;
+    const bookAuthor = req.body.book.author
 
     const newComputer = new Books({
         bookName,
         bookAuthor,
-        date,
     });
 
     // Save to database
     newComputer.save()
-        .then(() => res.json('Book added!'))
+        .then((book) => res.send(book))
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
