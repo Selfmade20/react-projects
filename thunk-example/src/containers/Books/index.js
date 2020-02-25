@@ -37,8 +37,10 @@ class Books extends Component {
         return
       }
     }
-    const book = this.state.newBook
-    this.props.addBook(book)
+    this.props.addBook({
+      bookName: "",
+      bookAuthor: ""
+    })
     this.setState({ newBook: ""  })
   }
 
@@ -63,10 +65,10 @@ class Books extends Component {
       <label style={{ textAlign: "left" }}>Enter Details below</label>
       <div className="con">
         <h7>Name here :</h7>
-        <input placeholder="Enter name here" type="text" value={this.state.name} onChange={e => this.setState({ name: e.target.value })} />
+        <input placeholder="Enter book name here" type="text" value={this.state.bookName} onChange={e => this.setState({ bookName: e.target.value })} />
         <h7>Author here :</h7>
-        <input placeholder="Enter author here" type="text" value={this.state.author} onChange={e => this.setState({ author: e.target.value })} />
-        <button onClick={() => this.addBook(name, author)}>Add</button>
+        <input placeholder="Enter book author here" type="text" value={this.state.bookAuthor} onChange={e => this.setState({ bookAuthor: e.target.value })} />
+        <button onClick={() => this.addBook()}>Add</button>
       </div>
       {isToggle !== false ? <div>
         <input type="text" value={editAuthor} onChange={e => this.setState({ editAuthor: e.target.value })} />

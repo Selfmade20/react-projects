@@ -11,8 +11,7 @@ router.route('/').get((req, res) => {
 // Handles incoming http .post request
 router.route('/add').post((req, res) => {
     const name = req.body.name;
-    console.log("home home body" , req.body);
-
+    
     const newComputer = new Computers({
         name,
     });

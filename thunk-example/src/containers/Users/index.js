@@ -35,12 +35,14 @@ class Users extends Component {
 
   render() {
     const { users } = this.props
-    console.log('users ' , users)
+    console.log('users ', users)
     return <div className="items">
-
-      <h7 className="name">Name:</h7>
-      <input className="input" placeholder="Enter user here" type="text" onChange={this.setValue} value={this.state.newUser} />
-      <button className="add_user" onClick={() => this.addUser()}>Add User</button>
+      <h1 className="header">Users</h1>
+      <div className="input-container">
+        <h7 className="name">Name:</h7>
+        <input className="input" placeholder="Enter user here" type="text" onChange={this.setValue} value={this.state.newUser} />
+        <button className="add_user" onClick={() => this.addUser()}>Add User</button>
+      </div>
       <div className="data">
         <h1 className="header">Users</h1>
         <label><strong>Names</strong></label>

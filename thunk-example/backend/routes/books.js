@@ -10,7 +10,6 @@ router.route('/').get((req, res) => {
 
 // Handles incoming http .post request
 router.route('/add').post((req, res) => {
-    console.log('dfhsdf', req.body)
     const bookName = req.body.book.name;
     const bookAuthor = req.body.book.author
 
