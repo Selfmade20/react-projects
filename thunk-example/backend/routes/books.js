@@ -2,21 +2,30 @@ const router = require('express').Router();
 let Books = require('../models/books.model');
 
 // Handles incoming http .get request
-router.route('/').get((req, res) => {
-    Books.find()
-        .then(books => res.json(books))
-        .catch(err => res.status(400).json("Error: " + err));
+
+router.route('/').get(async (req, res) => {
+    try {
+        const books = await Books.find()
+        return res.send(books)
+    } catch (err) {
+        return res.status(400).json("Error: " + err)
+    }
+    // .then(books => res.json(books))   
+    // .catch(err => res.status(400).json("Error: " + err));
 });
 
 // Handles incoming http .post request
-router.route('/add').post((req, res) => {
-    const bookName = req.body.book.name;
-    const bookAuthor = req.body.book.author
+router.route('/').post((req, res) => {
+    console.log("Yebow", req.body)
+    const bookName = req.body.book.bookName;
+    const bookAuthor = req.body.book.bookAuthor
+
 
     const newComputer = new Books({
         bookName,
         bookAuthor,
     });
+
 
     // Save to database
     newComputer.save()
@@ -25,31 +34,28 @@ router.route('/add').post((req, res) => {
 });
 
 
-router.route('/:id').get((req,res) => {
-    Books.findById(req.params.id)
-    .then(books => res.json(books))
-    .catch(err => res.status(400).json('Error: ' + err));
+router.route('/:id').get(async (req, res) => {
+    try {
+        const books = Books.findById(req.params.id)
+        return res.status(200).json(books)
+    } catch (err) {
+        return res.status(400).json("Error: " + err)
+    }
 });
 
-router.route('/:id').delete((req, res) => {
-    Books.findByIdAndDelete(req.params.id)
-    .then(() => res.json('Book deleted!'))
-    .catch(err => res.status(400).json('Error: ' + err));
+router.route('/:id').delete(async (req, res) => {
+    try {
+        await Books.findByIdAndDelete(req.params.id)
+        return res.status(200).json("Book deleted")
+    } catch (err) {
+        return res.status(400).json("Error: " + err)
+    }
 });
 
-router.route('/update/:id').post((req, res) => {
-    Books.findById(req.params.id)
-    .then(books => {
-        books.bookName = req.body.bookName;
-        books.bookAuthor = req.body.bookAuthor;
-        books.date = Date.parse(req.body.date);
-
-        books.save()
-        .then(() => res.json('Book updated!'))
-        .catch(err => res.status(400).json('Error: ' + err));
-    })
-    .catch(err => res.status(400).json('Error: ' + err));
-});
-
+// router.route('/:id').put(async(req,res) =>{
+//     try{
+//         await 
+//     }
+// })
 
 module.exports = router;  

@@ -31,7 +31,7 @@ export function  getAllComputers() {
 export function addComputer(name) {
     return async dispatch => {
         try{
-            const {data} = await axios.post('http://localhost:5000/computers/add', {name})
+            const {data} = await axios.post('http://localhost:5000/computers/', {name})
             dispatch({type : "ADD_COMPUTER" , payload : data})
         }catch(e){
             console.log(e);

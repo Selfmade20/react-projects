@@ -5,7 +5,7 @@ const initialState = {
 export default function books(state = initialState, action) {
   switch (action.type) {
     case "ADD_BOOK": {
-      return { ...state, availableBooks: [...state.computers, action.payload] }
+      return { ...state, availableBooks: [...state.availableBooks, action.payload] }
     }
     case "REMOVE_BOOK": {
       return { availableBooks: [...state.availableBooks.filter(book => book._id !== action.payload.id)] }

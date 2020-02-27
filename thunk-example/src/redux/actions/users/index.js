@@ -3,7 +3,7 @@ import axios from 'axios'
 export function addUser(username) {
     return async dispatch => {
         try {
-            const { data } = await axios.post('http://localhost:5000/users/add', { username })
+            const { data } = await axios.post('http://localhost:5000/users/', { username })
             dispatch({ type: "ADD_USER", payload: data })
         } catch (error) {
             console.log(error);

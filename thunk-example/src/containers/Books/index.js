@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addBook, removeBook, editContent, getAllBooks } from '../../redux/actions/books';
 import "./books.css"
+import moment from 'moment'
 
 
 
@@ -28,9 +29,10 @@ class Books extends Component {
     });
   }
 
-  addBook(bookName, bookAuthor) {
+  addBook() {
     const { availableBooks } = this.props;
-
+    const { bookName, bookAuthor } = this.state
+    // console.log(bookName, bookAuthor);
     for (var i in availableBooks) {
       if (availableBooks[i].bookAuthor === bookAuthor) {
         alert('Found existing Author')
@@ -38,10 +40,10 @@ class Books extends Component {
       }
     }
     this.props.addBook({
-      bookName: "",
-      bookAuthor: ""
+      bookName,
+      bookAuthor
     })
-    this.setState({ newBook: ""  })
+    this.setState({ newBook: "" })
   }
 
   editContent(editAuthor, editId) {
@@ -74,9 +76,9 @@ class Books extends Component {
         <input type="text" value={editAuthor} onChange={e => this.setState({ editAuthor: e.target.value })} />
         <button onClick={() => this.editContent(editAuthor, editId)}>Save</button>
       </div> : null}
-      {availableBooks.map(book => <div style={{ wordSpacing: 10 }} className="data"
+      {availableBooks.map(book => <div style={{ wordSpacing: 9 }} className="data"
         key={book.name}><strong>Name:</strong> {book.bookName}  <strong>Author:</strong> {book.bookAuthor}
-        <h5>Date: {book.date}</h5>
+        <h5>Date: {moment(book.date).format("DD.MM.YYYY")}</h5>
         <div className='book-buttons'>
           <button onClick={() => this.props.removeBook(book._id)}>Remove Book</button>
           <button onClick={() => this.setEditState(book.bookAuthor, book._id)}>Edit</button>
@@ -93,8 +95,8 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  addBook: (name, author) =>
-    dispatch(addBook({ name, author })
+  addBook: (book) =>
+    dispatch(addBook(book)
     ),
   removeBook: (id) =>
     dispatch(removeBook({ id })
@@ -102,9 +104,9 @@ const mapDispatchToProps = dispatch => ({
   editContent: (name, id) =>
     dispatch(editContent({ name, id })
     ),
-    getAllBooks: () => {
-      dispatch(getAllBooks())
-    }
+  getAllBooks: () => {
+    dispatch(getAllBooks())
+  }
 })
 
 

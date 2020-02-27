@@ -2,9 +2,9 @@ import axios from 'axios';
 
 export function addBook(book) {
     return async dispatch => {
-        // console.log("bookName", bookName)
+        console.log("bookName", book)
         try {
-            const { data } = await axios.post('http://localhost:5000/books/add', { book })
+            const { data } = await axios.post('http://localhost:5000/books', { book })
             dispatch({ type: "ADD_BOOK", payload: data })
         } catch (e) {
             console.log(e);
