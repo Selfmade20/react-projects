@@ -26,15 +26,11 @@ router.route('/').post(async (req, res) => {
     } catch (err) {
         return res.status(400).json("Error: " + err)
     }
-    // .then((computer) => res.send(200).computer(d))
-    // .catch(err => {
-    //     res.status(400).json('Error: ' + err)
-    // });
 });
 
 router.route('/:id').get(async (req, res) => {
     try {
-        const computers = Computers.findById(req.params.id)
+        const computers = await Computers.findById(req.params.id)
         return res.status(200).json(computers)
     } catch (err) {
         return res.status(400).json("Error: " + err)
@@ -50,18 +46,6 @@ router.route('/:id').delete(async (req, res) => {
     }
 });
 
-router.route('/:id').post(async (req, res) => {
-    Computers.findById(req.params.id)
-        .then(computers => {
-            computers.name = req.body.name;
-            computers.date = Date.parse(req.body.date);
-
-            computers.save()
-                .then(() => res.json('Computer updated!'))
-                .catch(err => res.status(400).json('Error: ' + err));
-        })
-        .catch(err => res.status(400).json('Error: ' + err));
-});
 
 module.exports = router;
 

@@ -6,7 +6,6 @@ let User = require('../models/user.model');
 router.route('/').get(async (req, res) => {
     try {
         const users = await User.find()
-        console.log("Users", users)
         return res.status(200).json(users)
     } catch (err) {
         return res.status(400).json("Error: " + err)
@@ -29,16 +28,16 @@ router.route('/').post(async (req, res) => {
 
 router.route('/:id').get(async (req, res) => {
     try {
-        const users = User.findById(req.params.id)
+        const users = await findById(req.params.id)
         return res.send(200).json(users)
     } catch (err) {
         return res.status(400).json("Error: " + err)
     }
 });
 
-router.route('/:id').delete((req, res) => {
+router.route('/:id').delete(async (req, res) => {
     try {
-        User.findByIdAndDelete(req.params.id)
+      await User.findByIdAndDelete(req.params.id)
         return res.status(200).json("User deleted")
     } catch (err) {
         return res.status(400).json("Error: " + err)

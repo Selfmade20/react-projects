@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import './computers.css';
 import { addComputer, getAllComputers, removeComputer } from '../../redux/actions/computer';
 import moment from 'moment';
+import Loader from '../../components/Loader'
 
 
 class Computer extends Component {
@@ -35,16 +36,15 @@ class Computer extends Component {
     }
 
     const name = this.state.newComputer;
-    this.setState({ loading: true });
+  
     this.props.addComputer(name)
-    this.setState({ loading: false });
     this.setState({ newComputer: '' });
 
   }
 
   render() {
     const { computers } = this.props
-    const { loading } = this.state
+    
 
     return <div>
       <h1 className="header">Computers</h1>
@@ -52,11 +52,12 @@ class Computer extends Component {
       <div className="inputs-container">
         <label>Name :</label>
         <input placeholder="Enter computer here" type="text" onChange={this.setValue} value={this.state.newComputer} />
-        <button onClick={() => this.addComputer(this.state.newComputer)} disabled={loading}>
-          {loading && <i className="fa fa-refresh fa-spin"></i>}
-          Add Computer
+        <button onClick={() => this.addComputer(this.state.newComputer)}>
+        {false ?  <Loader/> : null}
+          <i className="fa fa-refresh"></i> Add Computer
         </button>
       </div>
+ 
       {computers.map(c =>
         <div className="data">
           <h5>Name: {c.name}</h5>

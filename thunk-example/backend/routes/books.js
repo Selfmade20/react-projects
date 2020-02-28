@@ -15,28 +15,27 @@ router.route('/').get(async (req, res) => {
 });
 
 // Handles incoming http .post request
-router.route('/').post((req, res) => {
-    console.log("Yebow", req.body)
+router.route('/').post(async (req, res) => {
     const bookName = req.body.book.bookName;
     const bookAuthor = req.body.book.bookAuthor
 
 
-    const newComputer = new Books({
+    const newBook = new Books({
         bookName,
         bookAuthor,
     });
-
-
-    // Save to database
-    newComputer.save()
-        .then((book) => res.send(book))
-        .catch(err => res.status(400).json('Error: ' + err));
+    try {
+        const book = await newBook.save()
+        return res.send(book);
+    } catch (err) {
+        return res.status(400).json("Error: " + err)
+    }
 });
 
 
 router.route('/:id').get(async (req, res) => {
     try {
-        const books = Books.findById(req.params.id)
+        const books = await Books.findById(req.params.id)
         return res.status(200).json(books)
     } catch (err) {
         return res.status(400).json("Error: " + err)
@@ -52,10 +51,13 @@ router.route('/:id').delete(async (req, res) => {
     }
 });
 
-// router.route('/:id').put(async(req,res) =>{
-//     try{
-//         await 
-//     }
-// })
+router.route('/:id').put(async (req, res) => {
+    try {
+        await Books.update(req.params.id)
+        res.status(200).json("Book edited")
+    } catch (err) {
+        return res.status(400).json("Error: " + err)
+    }
+})
 
 module.exports = router;  

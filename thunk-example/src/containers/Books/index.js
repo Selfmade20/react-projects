@@ -61,9 +61,13 @@ class Books extends Component {
 
 
   render() {
-    const { isToggle, name, author, editAuthor, editId, } = this.state;
+    const { isToggle, editAuthor, editId, } = this.state;
     const { availableBooks } = this.props;
     return <div className="books"><h1 className="header">Books</h1>
+      <div className="search">
+        <input type="text" placeholder="Search..." /><button>
+          < i className="fa fa-search"> Search</i></button>
+      </div>
       <label style={{ textAlign: "left" }}>Enter Details below</label>
       <div className="con">
         <h7>Name here :</h7>

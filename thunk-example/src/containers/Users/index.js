@@ -23,7 +23,7 @@ class Users extends Component {
     const { users } = this.props;
 
     for (var i in users) {
-      if (users[i]["first_name"] === this.state.newUser) {
+      if (users[i]["username"] === this.state.newUser) {
         alert("User already exists")
         return
       }
@@ -35,18 +35,19 @@ class Users extends Component {
 
   render() {
     const { users } = this.props
-    console.log('users ', users)
     return <div className="items">
       <h1 className="header">Users</h1>
       <div className="input-container">
         <h7 className="name">Name:</h7>
         <input className="input" placeholder="Enter user here" type="text" onChange={this.setValue} value={this.state.newUser} />
-        <button className="add_user" onClick={() => this.addUser()}>Add User</button>
+        <button className="add_user" onClick={() => this.addUser()}>
+          <i className="fa fa-refresh"> Add User</i>
+        </button>
       </div>
       <div className="data">
         <h1 className="header">Users</h1>
         <label><strong>Names</strong></label>
-  {users.map(u => <div className="user-names"><li> {u.username}</li>
+        {users.map(u => <div className="user-names"><li> {u.username}</li>
           <button onClick={() => this.props.removeUser(u._id)}>Remove User</button>
         </div>)}
       </div>
