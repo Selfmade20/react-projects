@@ -1,30 +1,50 @@
 import React from 'react';
 import { Button } from 'react-bootstrap'
-import PropTypes from 'prop-types';
 import Tooltip from 'react-bootstrap/Tooltip';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
-import {useState} from 'react';
-import {Switch} from 'react-switch';
 
 
 function Buttons(props) {
+
 
     const tooltip = (
         <Tooltip id="tooltip">{props.isStrict ? "Strict mode is turned on" : "Strict mode is turned off"}</Tooltip>
     );
 
+    const pads = [
+        {
+            id: 0,
+            color: "red",
+            sound: new Audio('https://s3.amazonaws.com/freecodecamp/simonSound1.mp3'),
+        }, {
+            id: 1,
+            color: "yellow",
+            sound: new Audio('https://s3.amazonaws.com/freecodecamp/simonSound2.mp3'),
+        }, {
+            id: 2,
+            color: "blue",
+            sound: new Audio('https://s3.amazonaws.com/freecodecamp/simonSound3.mp3')
+        }, {
+            id: 3,
+            color: "green",
+            sound: new Audio('https://s3.amazonaws.com/freecodecamp/simonSound4.mp3')
+        }
+    ]
+
+
+
     return (
         <div className="text-center button-panel">
-        <div className="header">SIMON GAME</div>
+            <div className="header">SIMON GAME</div>
             <div className="board-buttons">
                 <button style=
-                {{backgroundColor: "yellow", width: 250, height: 150}}/>
+                    {{ backgroundColor: "yellow", width: 250, height: 150 }} />
                 <button style=
-                {{backgroundColor: "blue", width: 250, height: 150}}/> 
+                    {{ backgroundColor: "blue", width: 250, height: 150 }} />
             </div>
             <div className="board-buttons">
-                <button style={{backgroundColor: "red", width: 250 , height: 150}}/>
-                <button style={{backgroundColor: "green", width: 250, height: 150}}/>
+                <button style={{ backgroundColor: "red", width: 250, height: 150 }} />
+                <button style={{ backgroundColor: "green", width: 250, height: 150 }} />
             </div>
             <Button
                 bsStyle="primary"
@@ -46,12 +66,5 @@ function Buttons(props) {
     )
 }
 
-// Buttons.propTypes = {
-//     isStarted: PropTypes.bool.isRequired,
-//     isStrict: PropTypes.bool.isRequired,
-//     count: PropTypes.number.isRequired,
-//     onStrictToggle: PropTypes.func.isRequired,
-//     onStart: PropTypes.func.isRequired
-// }
 
 export default Buttons;

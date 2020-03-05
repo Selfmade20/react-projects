@@ -38,8 +38,17 @@ class Game extends Component {
         }
     }
     stop =() => {
-        console.log("yebow")
-    } 
+        this.currentIndex = 0;
+        this.soundArray = [];
+        this.setState({
+          isStarted: false,
+          isStrict: this.state.isStrict,
+          count: 0,
+          activeItems: [false, false, false, false],
+          isEnabled: false,
+          isBlinking: false
+        })
+    }
 
 
     render() {
