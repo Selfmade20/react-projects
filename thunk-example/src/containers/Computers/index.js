@@ -53,7 +53,7 @@ class Computer extends Component {
         <label>Name :</label>
         <input placeholder="Enter computer here" type="text" onChange={this.setValue} value={this.state.newComputer} />
         <button onClick={() => this.addComputer(this.state.newComputer)}>
-        {false ?  <Loader/> : null}
+        {false   ?  <Loader/> : null}
           <i className="fa fa-refresh"></i> Add Computer
         </button>
       </div>
@@ -62,7 +62,7 @@ class Computer extends Component {
         <div className="data">
           <h5>Name: {c.name}</h5>
           <h5>Date: {moment(c.date).format("DD.MM.YYYY")}</h5>
-          <button onClick={() => this.props.removeComputer(c._id)}> Remove Computer</button>
+          <button onClick={() => this.props.removeComputer(c.id)}> Remove Computer</button>
           <div>
           </div>
         </div>)}

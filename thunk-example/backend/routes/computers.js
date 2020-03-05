@@ -5,7 +5,10 @@ let Computers = require('../models/computers.model');
 router.route('/').get(async (req, res) => {
     try {
         const computers = await Computers.find()
-        return res.send(computers)
+        const computerObj = await computers.map((computer) => {
+            return { id: computer._id, name: computer.name }
+        })
+        return res.status(200).json(computerObj)
     } catch (err) {
         return res.status(400).json("Error: " + err)
     }
@@ -15,14 +18,12 @@ router.route('/').get(async (req, res) => {
 router.route('/').post(async (req, res) => {
     const name = req.body.name;
 
-    const newComputer = new Computers({
-        name,
-    });
+    const newComputer = new Computers({ name });
     // Saved to database
     try {
         const computer = await newComputer.save()
-
-        return res.send(computer)
+        const computerObj = {id : computer._id , name : computer.name}
+        return res.send(computerObj)
     } catch (err) {
         return res.status(400).json("Error: " + err)
     }

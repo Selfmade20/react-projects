@@ -10,6 +10,7 @@ class Books extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      query: "", 
       isToggle: false,
       editId: "",
       editAuthor: "",
@@ -60,13 +61,19 @@ class Books extends Component {
   }
 
 
+
+
   render() {
     const { isToggle, editAuthor, editId, } = this.state;
     const { availableBooks } = this.props;
     return <div className="books"><h1 className="header">Books</h1>
       <div className="search">
-        <input type="text" placeholder="Search..." /><button>
-          < i className="fa fa-search"> Search</i></button>
+        <input type="text"
+          placeholder="Search..."
+          value=""
+          onChange={this.handleOnInputChange}
+        />
+        <button>< i className="fa fa-search"> Search</i></button>
       </div>
       <label style={{ textAlign: "left" }}>Enter Details below</label>
       <div className="con">
@@ -76,7 +83,7 @@ class Books extends Component {
         <input placeholder="Enter book author here" type="text" value={this.state.bookAuthor} onChange={e => this.setState({ bookAuthor: e.target.value })} />
         <button onClick={() => this.addBook()}>Add</button>
       </div>
-      {isToggle !== false ? <div>
+      {isToggle !== false ? <div className="edit_author">
         <input type="text" value={editAuthor} onChange={e => this.setState({ editAuthor: e.target.value })} />
         <button onClick={() => this.editContent(editAuthor, editId)}>Save</button>
       </div> : null}
@@ -84,8 +91,8 @@ class Books extends Component {
         key={book.name}><strong>Name:</strong> {book.bookName}  <strong>Author:</strong> {book.bookAuthor}
         <h5>Date: {moment(book.date).format("DD.MM.YYYY")}</h5>
         <div className='book-buttons'>
-          <button onClick={() => this.props.removeBook(book._id)}>Remove Book</button>
-          <button onClick={() => this.setEditState(book.bookAuthor, book._id)}>Edit</button>
+          <button onClick={() => this.props.removeBook(book.id)}>Remove Book</button>
+          <button onClick={() => this.setEditState(book.bookAuthor, book.id)}>Edit</button>
         </div>
       </div>)
       }

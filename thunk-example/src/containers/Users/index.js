@@ -48,7 +48,7 @@ class Users extends Component {
         <h1 className="header">Users</h1>
         <label><strong>Names</strong></label>
         {users.map(u => <div className="user-names"><li> {u.username}</li>
-          <button onClick={() => this.props.removeUser(u._id)}>Remove User</button>
+          <button onClick={() => this.props.removeUser(u.id)}>Remove User</button>
         </div>)}
       </div>
     </div>

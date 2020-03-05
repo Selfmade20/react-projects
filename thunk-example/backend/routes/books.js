@@ -6,7 +6,10 @@ let Books = require('../models/books.model');
 router.route('/').get(async (req, res) => {
     try {
         const books = await Books.find()
-        return res.send(books)
+        const bookObj = await books.map((book) => {
+            return {id: book.id, bookName: book.bookName, bookAuthor: book.bookAuthor}
+        })
+        return res.send(bookObj)
     } catch (err) {
         return res.status(400).json("Error: " + err)
     }
@@ -26,7 +29,8 @@ router.route('/').post(async (req, res) => {
     });
     try {
         const book = await newBook.save()
-        return res.send(book);
+        const bookObj = {id: book._id, bookName: book.bookName, bookAuthor: book.bookAuthor}
+        return res.send(bookObj);
     } catch (err) {
         return res.status(400).json("Error: " + err)
     }

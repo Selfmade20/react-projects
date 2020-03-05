@@ -8,10 +8,10 @@ export default function books(state = initialState, action) {
       return { ...state, availableBooks: [...state.availableBooks, action.payload] }
     }
     case "REMOVE_BOOK": {
-      return { availableBooks: [...state.availableBooks.filter(book => book._id !== action.payload.id)] }
+      return { availableBooks: [...state.availableBooks.filter(book => book.id !== action.payload.id)] }
     }
     case "EDIT_CONTENT": {
-      const indexOfPosition = state.availableBooks.findIndex(book => book._id === action.payload.name.id);
+      const indexOfPosition = state.availableBooks.findIndex(book => book.id === action.payload.name.id);
       state.availableBooks[indexOfPosition].author = action.payload.name.name;
       return { ...state, availableBooks: [...state.availableBooks] };
     }

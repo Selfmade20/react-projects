@@ -3,10 +3,10 @@ import axios from 'axios';
 
 export function removeComputer(id) {
     return async dispatch => {
-        try{
+        try {
             await axios.delete(`http://localhost:5000/computers/${id}`)
-            dispatch({type : "REMOVE_COMPUTER" , payload : {id}})
-        }catch(e){
+            dispatch({ type: "REMOVE_COMPUTER", payload: { id } })
+        } catch (e) {
             console.log(e);
         }
 
@@ -15,12 +15,13 @@ export function removeComputer(id) {
 }
 
 
-export function  getAllComputers() {
+export function getAllComputers() {
     return async dispatch => {
-        try{
-            const {data} =  await axios.get('http://localhost:5000/computers');
-            dispatch({type : "GET_ALL_COMPUTERS" , payload : data})
-        }catch(e){
+        dispatch({ type: "IS_LOADING" });
+        try {
+            const { data } = await axios.get('http://localhost:5000/computers');
+            dispatch({ type: "GET_ALL_COMPUTERS", payload: data })
+        } catch (e) {
             console.log(e);
         }
 
@@ -30,10 +31,12 @@ export function  getAllComputers() {
 
 export function addComputer(name) {
     return async dispatch => {
-        try{
-            const {data} = await axios.post('http://localhost:5000/computers/', {name})
-            dispatch({type : "ADD_COMPUTER" , payload : data})
-        }catch(e){
+        try {
+            dispatch({ type: "TOGGLE_LOADING", payload: true })
+            const { data } = await axios.post('http://localhost:5000/computers/', { name })
+            dispatch({ type: "ADD_COMPUTER", payload: data })
+            dispatch({ type: "TOGGLE_LOADING", payload: false })
+        } catch (e) {
             console.log(e);
         }
 
