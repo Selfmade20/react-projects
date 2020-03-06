@@ -53,7 +53,7 @@ class Computer extends Component {
         <label>Name :</label>
         <input placeholder="Enter computer here" type="text" onChange={this.setValue} value={this.state.newComputer} />
         <button onClick={() => this.addComputer(this.state.newComputer)}>
-        {false   ?  <Loader/> : null}
+        {/* {true  ?  <Loader/> : null} */}
           <i className="fa fa-refresh"></i> Add Computer
         </button>
       </div>

@@ -17,9 +17,10 @@ export function removeComputer(id) {
 
 export function getAllComputers() {
     return async dispatch => {
-        dispatch({ type: "IS_LOADING" });
         try {
+            dispatch({ type: "IS_LOADING", payload: false });
             const { data } = await axios.get('http://localhost:5000/computers');
+            dispatch({ type: "LOADED", payload: true })
             dispatch({ type: "GET_ALL_COMPUTERS", payload: data })
         } catch (e) {
             console.log(e);

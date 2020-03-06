@@ -6,6 +6,7 @@ let Books = require('../models/books.model');
 router.route('/').get(async (req, res) => {
     try {
         const books = await Books.find()
+        console.log(books)
         const bookObj = await books.map((book) => {
             return {id: book.id, bookName: book.bookName, bookAuthor: book.bookAuthor}
         })
@@ -57,11 +58,14 @@ router.route('/:id').delete(async (req, res) => {
 
 router.route('/:id').put(async (req, res) => {
     try {
-        await Books.update(req.params.id)
-        res.status(200).json("Book edited")
+        const { id, name} = req.body
+        console.log(id, name)
+        const result = await Books.update({_id: id}, {$set: {bookAuthor : name} })
+        res.status(200).json(result)
     } catch (err) {
-        return res.status(400).json("Error: " + err)
+        return res.status(400).json("Error: " + err)    
     }
-})
+});
+
 
 module.exports = router;  

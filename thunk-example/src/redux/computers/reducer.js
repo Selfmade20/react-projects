@@ -14,12 +14,6 @@ export default function addComputer(state = initialState, action) {
     case "GET_ALL_COMPUTERS": {
       return { ...state, computers: [...action.payload] }
     }
-    case "IS_LOADING": {
-      return { ...state, loading: true, };
-    }
-    case "LOADED": {
-      return { ...state, computers: action.payload, loading: false }
-    }
     default:
       return state
   }

@@ -26,7 +26,9 @@ export function removeBook(id) {
 export function getAllBooks() {
     return async dispatch => {
         try {
+
             const { data } = await axios.get('http://localhost:5000/books');
+            
             dispatch({ type: "GET_ALL_BOOKS", payload: data })
         } catch (e) {
             console.log(e)
@@ -40,7 +42,7 @@ export function editContent(editValues) {
         console.log("IDS", editValues)
         try {
             await axios.put(`http://localhost:5000/books/${editValues.id}` , editValues);
-            // dispatch({ type: "GET_ALL_BOOKS", payload: name })
+            dispatch({ type: "EDIT_CONTENT", payload: editValues })
         } catch (e) {
             console.log(e);
         }
