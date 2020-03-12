@@ -48,3 +48,28 @@ export function editContent(editValues) {
         }
     }
 }
+export function getName (bookName) {
+    return async dispatch => {
+        try {
+            const { data } = await axios.get(`http://localhost:5000/books/${bookName}`)
+            dispatch({
+                type: 'GET_BOOK_NAME', payload: data
+            })
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}
+
+export function getAuthor (bookAuthor) {
+    return async dispatch => {
+        try {
+            const { data } = await axios.get(`http://localhost:5000/authors/${bookAuthor}`)
+            dispatch({
+                type: 'GET_BOOK_AUTHOR', payload: data
+            })
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}

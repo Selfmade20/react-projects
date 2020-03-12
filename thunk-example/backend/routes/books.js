@@ -12,7 +12,7 @@ router.route('/').get(async (req, res) => {
         return res.send(bookObj)
     } catch (err) {
         return res.status(400).json("Error: " + err)
-    }   
+    }
     // .then(books => res.json(books))   
     // .catch(err => res.status(400).json("Error: " + err));
 });
@@ -32,7 +32,7 @@ router.route('/').post(async (req, res) => {
     if (findOneByName) {
         return res.status(400).json({ message: "Book not added because it exists!" })
     }
- 
+
     const newBook = new Books({
         bookName,
         bookAuthor,
@@ -47,14 +47,25 @@ router.route('/').post(async (req, res) => {
 });
 
 
-router.route('/:id').get(async (req, res) => {
+router.route('/:bookName').get(async (req, res) => {
     try {
-        const books = await Books.findById(req.params.id)
+        const books = await Books.find({ bookName: req.params.bookName })
         return res.status(200).json(books)
     } catch (err) {
         return res.status(400).json("Error: " + err)
     }
 });
+
+router.route('/:bookName/:bookAuthor').get(async (req, res) => {
+    try {
+        const { books } = req.params
+        const result = await Books.findOne({ books })
+        return res.status(200).json(result)
+    } catch (err) {
+        return res.status(400).json("Error: " + err)
+    }
+});
+
 
 router.route('/:id').delete(async (req, res) => {
     try {

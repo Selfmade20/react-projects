@@ -17,7 +17,13 @@ export default function books(state = initialState, action) {
       return { ...state, availableBooks: [...state.availableBooks] };
     }
     case  "GET_ALL_BOOKS":
-      return{...state, availableBooks: [...action.payload]}
+      return{...state, availableBooks: [...action.payload]};
+      
+    case "GET_BOOK_NAME":
+      return {...state, availableBooks: [...action.payload]};
+
+    case "GET_BOOK_NAME":
+      return {...state, availableBooks: [...action.payload]}
     default: {
       return state
     }

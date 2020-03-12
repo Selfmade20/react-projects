@@ -4,7 +4,9 @@ import {
   addBook,
   removeBook,
   editContent,
-  getAllBooks
+  getAllBooks,
+  getName,
+  getAuthor
 } from "../../redux/actions/books";
 import "./books.css";
 import moment from "moment";
@@ -19,7 +21,8 @@ class Books extends Component {
       isToggle: false,
       editId: "",
       editAuthor: "",
-      search: ""
+      bookName: "",
+      bookAuthor: ''
     };
   }
 
@@ -27,6 +30,21 @@ class Books extends Component {
     this.props.getAllBooks();
   }
 
+  nameChange = (event) => {
+    this.setState({ bookName: event.target.value })
+  }
+
+  authorChange = (event) => {
+    this.setState({ bookAuthor: event.target.value })
+  }
+
+  nameInput = (event) => {
+    this.setState({ bookName: event.target.value })
+  }
+
+  authorInput = (event) => {
+    this.setState({ bookAuthor: event.target.value})
+  }
   setEditState = (editAuthor, editId) => {
     this.setState({
       isToggle: !this.state.isToggle,
@@ -38,7 +56,6 @@ class Books extends Component {
   addBook() {
     const { availableBooks } = this.props;
     const { bookName, bookAuthor } = this.state;
-    // console.log(bookName, bookAuthor);
     for (var i in availableBooks) {
       if (availableBooks[i].bookAuthor === bookAuthor) {
         alert("Found existing Author");
@@ -78,9 +95,11 @@ class Books extends Component {
         <div className="search">
           <input
             type="text"
-            placeholder="Search..."
-          // value={this.state.search}
-          // onChange={this.setState({ search: "" })}
+            placeholder="Search by name"
+          />
+          <input
+            type="text"
+            placeholder="Search by author"
           />
           <button>
             <i className="fa fa-search"> Search</i>
