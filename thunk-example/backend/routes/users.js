@@ -18,6 +18,13 @@ router.route('/').get(async (req, res) => {
 //  Handles incoming http .post request
 router.route('/').post(async (req, res) => {
     const username = req.body.username;
+    if (username.trim().length < 1) {
+        return res.status(400).json({ 'message': "Please enter username!" })
+    }
+    const findOneByName = await User.findOne({ username: username })
+    if (findOneByName) {
+        return res.status(400).json({ message: "User not added because it exists!" })
+    }
 
     const newUser = new User({ username }); 
     try {

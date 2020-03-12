@@ -79,8 +79,8 @@ class Books extends Component {
           <input
             type="text"
             placeholder="Search..."
-            // value={this.state.search}
-            // onChange={this.setState({ search: "" })}
+          // value={this.state.search}
+          // onChange={this.setState({ search: "" })}
           />
           <button>
             <i className="fa fa-search"> Search</i>
@@ -134,7 +134,7 @@ class Books extends Component {
             </div>
           </div>
         ))}
-        <PaginationRounded/>
+        <PaginationRounded />
       </div>
     );
   }

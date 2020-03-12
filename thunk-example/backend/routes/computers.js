@@ -17,12 +17,21 @@ router.route('/').get(async (req, res) => {
 // Handles incoming http .post request
 router.route('/').post(async (req, res) => {
     const name = req.body.name;
+    if (name.trim().length < 1) {
+        return res.status(400).json({ 'message': "Please enter name" })
+        // console.log("ayeerereree")
+        // return
+    }
+    const findOneByName = await Computers.findOne({ name: name })
+    if (findOneByName) {
+        return res.status(400).json({ message: "Computer not added because it exists!" })
+    }
 
     const newComputer = new Computers({ name });
     // Saved to database
     try {
         const computer = await newComputer.save()
-        const computerObj = {id : computer._id , name : computer.name}
+        const computerObj = { id: computer._id, name: computer.name }
         return res.send(computerObj)
     } catch (err) {
         return res.status(400).json("Error: " + err)

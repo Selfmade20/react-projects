@@ -16,7 +16,6 @@
     "moment": "^2.24.0",
     "mongodb": "^3.5.2",
     "mongoose": "^5.8.11",
-    "nodemon": "^2.0.2",
     "react": "^16.9.0",
     "react-bootstrap": "^1.0.0-beta.16",
     "react-dom": "^16.9.0",
@@ -51,5 +50,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
   }
 }
