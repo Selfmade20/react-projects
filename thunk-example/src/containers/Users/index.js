@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { addUser, getAllUsers, removeUser } from "../../redux/actions/users";
 import "./users.css";
 // import Loader from 'src/components/Loader'
-import  PaginationRounded  from "../../components/Pagination";
+// import  PaginationRounded  from "../../components/Pagination";
 
 class Users extends Component {
   constructor(props) {
@@ -67,7 +67,7 @@ class Users extends Component {
               </button>
             </div>
           ))}
-          <PaginationRounded />
+        
         </div>
       </div>
     );

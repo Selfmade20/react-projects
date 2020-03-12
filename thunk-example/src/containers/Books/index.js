@@ -8,7 +8,8 @@ import {
 } from "../../redux/actions/books";
 import "./books.css";
 import moment from "moment";
-import Loader from "../../components/Loader";
+// import Loader from "src/components/Loader";
+import PaginationRounded from "../../components/Pagination";
 
 class Books extends Component {
   constructor(props) {
@@ -133,6 +134,7 @@ class Books extends Component {
             </div>
           </div>
         ))}
+        <PaginationRounded/>
       </div>
     );
   }

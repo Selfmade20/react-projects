@@ -49,6 +49,11 @@ class Game extends Component {
           isBlinking: false
         })
     }
+    start = () => {
+        if(!this.state.isStarted){
+            return  
+        }
+    }
 
 
     render() {
