@@ -30,21 +30,14 @@ class Books extends Component {
     this.props.getAllBooks();
   }
 
-  nameChange = (event) => {
+  handleNameChange = (event) => {
     this.setState({ bookName: event.target.value })
   }
 
-  authorChange = (event) => {
+  handleAuthorChange = (event) => {
     this.setState({ bookAuthor: event.target.value })
   }
 
-  nameInput = (event) => {
-    this.setState({ bookName: event.target.value })
-  }
-
-  authorInput = (event) => {
-    this.setState({ bookAuthor: event.target.value})
-  }
   setEditState = (editAuthor, editId) => {
     this.setState({
       isToggle: !this.state.isToggle,
@@ -96,12 +89,17 @@ class Books extends Component {
           <input
             type="text"
             placeholder="Search by name"
+            onChange={this.handleNameChange}
           />
+          <button onClick={() => this.props.getName(this.state.bookName)}>
+            <i className="fa fa-search"> Search</i>
+          </button>
           <input
             type="text"
             placeholder="Search by author"
+            onChange={this.handleAuthorChange}
           />
-          <button>
+          <button onClick={() => this.props.getAuthor(this.state.bookAuthor)}>
             <i className="fa fa-search"> Search</i>
           </button>
         </div>
@@ -164,12 +162,14 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  addBook: book => dispatch(addBook(book)),
+  addBook: (book) => dispatch(addBook(book)),
   removeBook: id => dispatch(removeBook({ id })),
   editContent: (name, id) => dispatch(editContent({ name, id })),
   getAllBooks: () => {
     dispatch(getAllBooks());
-  }
+  },
+  getName: book => dispatch(getName(book)),
+  getAuthor: book => dispatch(getAuthor(book)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Books);
