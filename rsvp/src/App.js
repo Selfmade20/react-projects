@@ -15,19 +15,28 @@ class App extends Component {
     }
   }
 
-  setValue = (event) => {
-    this.setState({ name: event.target.value })
-    this.setState({ email: event.target.value })
-    this.setState({ cellNumber: event.target.value })
-  }
+  handleEmailChange = (event) => {
+    this.setState({email: event.target.value});
+ }
+
+ handleNameChange = (event) => {
+   this.setState({name: event.target.value})
+ }
+
+handleNumberChange = (event) => {
+  this.setState({cellNumber: event.target.value})
+}
 
   submit = () => {
-
+    
     this.setState({
-      name: ""
+      name: "",
+      email: "",
+      cellNumber: '',
     })
+    console.log("SUB",this.state)
   }
-  
+
   render() {
     return (
       <div className="App">
@@ -35,26 +44,37 @@ class App extends Component {
           <h1>RSVP</h1>
         </header>
         <Form>
-          <Label>Name:
-            <Input type='text' required></Input>
-          </Label>
-          <Label>Email Address:
-            <Input type='email' required></Input>
-          </Label >
-          <Label>Cell Number:
-            <Input type="numbers"></Input>
-          </Label>
-          <Label>RSVP:</Label>
-          <Label><input type="checkbox" /></Label>
-          <Label>Yes<input type="checkbox" /></Label>
-          <Label>Dietary programme: </Label>
-          <select>
-            <option>Halal</option>
-            <option>Kosher</option>
-            <option>No Pork</option>
-          </select>
-
-          <Button onClick={this.state.name}>Submit</Button>
+          <div className='name'>
+            <Label>Name:
+            <Input type='text' onChange={this.handleNameChange} required></Input>
+            </Label>
+          </div>
+          <div className='email'>
+            <Label>Email Address:
+            <Input type='email' onChange={this.handleEmailChange} required></Input>
+            </Label >
+          </div>
+          <div className='numbers'>
+            <Label>Cell Number:
+            <Input type="numbers" onChange={this.handleNumberChange} ></Input>
+            </Label>
+          </div>
+          <div className='rsvp'>
+            <Label>RSVP:</Label>
+            <Label>No <input type="checkbox" value={this.state.rsvp} /></Label>
+            <Label>Yes <input type="checkbox" value={this.state.rsvp} /></Label>
+          </div>
+          <div className='diet'>
+            <Label>Dietary programme: </Label>
+            <select>
+              <option value="Halal">Halal</option>
+              <option value="Kosher">Kosher</option>
+              <option value="No Pork">No Pork</option>
+            </select>
+          </div>
+          <div className='submit'>
+            <Button onClick={this.submit}>Submit</Button>
+          </div>
         </Form>
 
       </div>
