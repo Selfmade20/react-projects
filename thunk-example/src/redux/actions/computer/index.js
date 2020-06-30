@@ -9,8 +9,6 @@ export function removeComputer(id) {
         } catch (e) {
             console.log(e);
         }
-
-        // dispatch({ type: "ADD_USERS", payload: [...users.data] })
     }
 }
 
@@ -25,8 +23,6 @@ export function getAllComputers() {
         } catch (e) {
             console.log(e);
         }
-
-        // dispatch({ type: "ADD_USERS", payload: [...users.data] })
     }
 }
 
@@ -40,8 +36,6 @@ export function addComputer(name) {
         } catch (e) {
             console.log(e);
         }
-
-        // dispatch({ type: "ADD_USERS", payload: [...users.data] })
     }
 }
 

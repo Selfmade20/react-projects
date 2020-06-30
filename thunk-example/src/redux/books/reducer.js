@@ -13,7 +13,6 @@ export default function books(state = initialState, action) {
     case "EDIT_CONTENT": {
       const indexOfPosition = state.availableBooks.findIndex(book  => book.id === action.payload.id);
       state.availableBooks[indexOfPosition].bookAuthor = action.payload.name;
-      console.log("state", state.availableBooks);
       return { ...state, availableBooks: [...state.availableBooks] };
     }
     case  "GET_ALL_BOOKS":
