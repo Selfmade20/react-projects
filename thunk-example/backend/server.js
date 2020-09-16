@@ -1,10 +1,9 @@
-const express = require('express');
+const express = require("express");
 const cors = require("cors");
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
-
-// Creating my environmental var for .env 
-require('dotenv').config();
+// Creating my environmental var for .env
+require("dotenv").config();
 
 // Creating server
 const app = express();
@@ -16,27 +15,27 @@ app.use(express.json());
 
 // Connecting to the Database
 const uri = process.env.ATLAS_URI;
-mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true }
-);
+mongoose.connect(uri, {
+  useNewUrlParser: true,
+  useCreateIndex: true,
+  useUnifiedTopology: true,
+});
 
 const connection = mongoose.connection;
-connection.once('open', () => {
-    console.log("MongoDB database connection established successfully")
-}
-);
+connection.once("open", () => {
+  console.log("MongoDB database connection established successfully");
+});
 
 // Using this files in my backend
-const computerRouter = require('./routes/computers');
-const usersRouter = require('./routes/users');
-const booksRouter = require('./routes/books');
+const computerRouter = require("./routes/computers");
+const usersRouter = require("./routes/users");
+const booksRouter = require("./routes/books");
 
-app.use('/computers', computerRouter);
-app.use('/users', usersRouter);
-app.use('/books', booksRouter);
-
-
+app.use("/computers", computerRouter);
+app.use("/users", usersRouter);
+app.use("/books", booksRouter);
 
 // Start my server
 app.listen(port, () => {
-    console.log(`Server is running on port: ${port}`)
-})
+  console.log(`Server is running on port: ${port}`);
+});
