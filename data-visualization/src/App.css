@@ -1,0 +1,21 @@
+.app-header {
+  width: 100%;
+  background-color: black;
+  padding-bottom: 1.2%;
+  color: orange;
+}
+
+.app-header > h2 {
+  text-align: center;
+  font-family: Verdana;
+  margin-top: 1px;
+}
+
+.container {
+  display: flex;
+  margin-left: 2%;
+}
+
+.bar__graph{
+margin-left: 30rem;
+}
